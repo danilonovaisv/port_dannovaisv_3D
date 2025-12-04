@@ -1,21 +1,13 @@
 
 "use client";
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import React, { useRef } from 'react';
 import { FEATURED_PROJECTS } from '../../lib/constants';
 
 const FeaturedProjects: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  // Parallax suave para o globo 3D
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const yGlobo = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
     <section
