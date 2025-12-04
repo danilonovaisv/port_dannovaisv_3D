@@ -2,15 +2,17 @@
 
 import { motion } from 'framer-motion';
 import { AlertCircle } from 'lucide-react';
-import React, { useRef, useState } from 'react';
+import type React from 'react';
+import { useId, useRef, useState } from 'react';
 import { ASSETS } from '../../lib/constants';
 
 const Manifesto: React.FC = () => {
   const [hasError, setHasError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const sectionId = useId();
 
   return (
-    <section id="manifesto" className="w-full bg-[#F4F5F7]">
+    <section id={sectionId} className="w-full bg-[#F4F5F7]">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

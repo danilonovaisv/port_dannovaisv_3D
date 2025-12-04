@@ -1,5 +1,5 @@
 1:"$Sreact.fragment"
 2:I[97367,["/_next/static/chunks/42879de7b8087bc9.js"],"OutletBoundary"]
 3:"$Sreact.suspense"
-0:{"buildId":"wKz99r5WXKorR_8VcOakw","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"pt-BR","children":["$","body",null,{"className":"bg-[#f5f7fb] text-slate-900 antialiased","children":["$","div",null,{"className":"pt-32 px-4 container mx-auto text-center min-h-[50vh]","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"Portfolio"}],["$","p",null,{"className":"text-gray-600","children":"Página em construção..."}]]}]}]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"UYBx1ePM2bTPGXEaVzamd","rsc":["$","$1","c",{"children":[["$","html",null,{"lang":"pt-BR","children":["$","body",null,{"className":"bg-[#f5f7fb] text-slate-900 antialiased","children":["$","div",null,{"className":"pt-32 px-4 container mx-auto text-center min-h-[50vh]","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"Portfolio"}],["$","p",null,{"className":"text-gray-600","children":"Página em construção..."}]]}]}]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"loading":null,"isPartial":false}
 4:null

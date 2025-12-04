@@ -2,7 +2,10 @@
 
 import { Environment } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import { type MotionValue } from 'framer-motion';
+import type { MotionValue } from 'framer-motion';
+
+;
+
 import type { PointerEvent } from 'react';
 import { Suspense, useEffect, useState } from 'react';
 import GlassOrb from './GlassOrb';

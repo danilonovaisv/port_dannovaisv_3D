@@ -190,13 +190,11 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Environment$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@react-three/drei/core/Environment.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/@react-three/fiber/dist/react-three-fiber.esm.js [app-client] (ecmascript) <locals>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$utils$2f$use$2d$motion$2d$value$2d$event$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/utils/use-motion-value-event.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$three$2f$GlassOrb$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/three/GlassOrb.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
-;
 ;
 ;
 ;
@@ -209,12 +207,21 @@ function HeroGlassCanvas({ scrollYProgress }) {
         y: 0,
         active: false
     });
-    // Sincroniza scroll do Framer Motion com a cena 3D
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$utils$2f$use$2d$motion$2d$value$2d$event$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMotionValueEvent"])(scrollYProgress, 'change', {
-        "HeroGlassCanvas.useMotionValueEvent": (latest)=>{
-            setScroll(latest);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "HeroGlassCanvas.useEffect": ()=>{
+            if (!scrollYProgress) {
+                return undefined;
+            }
+            const unsubscribe = scrollYProgress.onChange({
+                "HeroGlassCanvas.useEffect.unsubscribe": (latest)=>{
+                    setScroll(latest);
+                }
+            }["HeroGlassCanvas.useEffect.unsubscribe"]);
+            return unsubscribe;
         }
-    }["HeroGlassCanvas.useMotionValueEvent"]);
+    }["HeroGlassCanvas.useEffect"], [
+        scrollYProgress
+    ]);
     function handlePointerMove(e) {
         const rect = e.currentTarget.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width * 2 - 1; // -1..1
@@ -260,38 +267,34 @@ function HeroGlassCanvas({ scrollYProgress }) {
                         scroll: scroll
                     }, void 0, false, {
                         fileName: "[project]/src/components/three/HeroGlassCanvas.tsx",
-                        lineNumber: 66,
+                        lineNumber: 73,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Environment$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Environment"], {
                         preset: "studio"
                     }, void 0, false, {
                         fileName: "[project]/src/components/three/HeroGlassCanvas.tsx",
-                        lineNumber: 67,
+                        lineNumber: 74,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/three/HeroGlassCanvas.tsx",
-                lineNumber: 65,
+                lineNumber: 72,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/three/HeroGlassCanvas.tsx",
-            lineNumber: 60,
+            lineNumber: 67,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/three/HeroGlassCanvas.tsx",
-        lineNumber: 55,
+        lineNumber: 62,
         columnNumber: 5
     }, this);
 }
-_s(HeroGlassCanvas, "EJJUTUwaSz+MyZPpSoOE3IALMGc=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$utils$2f$use$2d$motion$2d$value$2d$event$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMotionValueEvent"]
-    ];
-});
+_s(HeroGlassCanvas, "eI3j80uB60eZlcQypHoH61WaJwc=");
 _c = HeroGlassCanvas;
 var _c;
 __turbopack_context__.k.register(_c, "HeroGlassCanvas");
