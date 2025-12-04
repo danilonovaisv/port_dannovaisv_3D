@@ -1,4 +1,1 @@
-[00:00:00.741] Server  LOG      ✓ Ready in 537ms
-[00:00:05.123] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
-[00:00:05.124] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
-[00:00:05.124] Browser WARN    value.onChange(callback) is deprecated. Switch to value.on("change", callback).
+[00:00:00.652] Server  LOG      ✓ Ready in 493ms

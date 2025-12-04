@@ -1,0 +1,180 @@
+===========================================
+ Projeto: port_dannovaisv_3D
+ Data: Thu Dec  4 08:23:49 -03 2025
+ Package manager detectado: yarn
+===========================================
+
+### Ambiente
+
+$ node -v
+v22.21.1
+
+$ npm -v
+11.6.4
+
+Sistema operacional:
+Darwin danilo-novais.local 25.2.0 Darwin Kernel Version 25.2.0: Tue Nov 18 21:09:40 PST 2025; root:xnu-12377.61.12~1/RELEASE_ARM64_T6000 arm64
+
+-------------------------------------------
+### Git status
+
+$ git status -sb
+## main...origin/main
+ M .next/BUILD_ID
+ M .next/build-manifest.json
+ M .next/cache/.tsbuildinfo
+ M .next/dev/build-manifest.json
+ M .next/dev/logs/next-development.log
+ M .next/dev/prerender-manifest.json
+ M .next/dev/server/app-paths-manifest.json
+ M .next/dev/server/app/_not-found/page.js
+ M .next/dev/server/app/_not-found/page_client-reference-manifest.js
+ M .next/dev/server/middleware-build-manifest.js
+ M .next/dev/trace
+ M .next/fallback-build-manifest.json
+ M .next/server/app/_global-error.html
+ M .next/server/app/_global-error.rsc
+ M .next/server/app/_global-error.segments/__PAGE__.segment.rsc
+ M .next/server/app/_global-error.segments/_full.segment.rsc
+ M .next/server/app/_global-error.segments/_head.segment.rsc
+ M .next/server/app/_global-error.segments/_index.segment.rsc
+ M .next/server/app/_global-error.segments/_tree.segment.rsc
+ M .next/server/app/_not-found.html
+ M .next/server/app/_not-found.rsc
+ M .next/server/app/_not-found.segments/_full.segment.rsc
+ M .next/server/app/_not-found.segments/_head.segment.rsc
+ M .next/server/app/_not-found.segments/_index.segment.rsc
+ M .next/server/app/_not-found.segments/_not-found.segment.rsc
+ M .next/server/app/_not-found.segments/_not-found/__PAGE__.segment.rsc
+ M .next/server/app/_not-found.segments/_tree.segment.rsc
+ M .next/server/app/index.html
+ M .next/server/app/index.rsc
+ M .next/server/app/index.segments/__PAGE__.segment.rsc
+ M .next/server/app/index.segments/_full.segment.rsc
+ M .next/server/app/index.segments/_head.segment.rsc
+ M .next/server/app/index.segments/_index.segment.rsc
+ M .next/server/app/index.segments/_tree.segment.rsc
+ M .next/server/app/portfolio.html
+ M .next/server/app/portfolio.rsc
+ M .next/server/app/portfolio.segments/_full.segment.rsc
+ M .next/server/app/portfolio.segments/_head.segment.rsc
+ M .next/server/app/portfolio.segments/_index.segment.rsc
+ M .next/server/app/portfolio.segments/_tree.segment.rsc
+ M .next/server/app/portfolio.segments/portfolio.segment.rsc
+ M .next/server/app/portfolio.segments/portfolio/__PAGE__.segment.rsc
+ M .next/server/app/sobre.html
+ M .next/server/app/sobre.rsc
+ M .next/server/app/sobre.segments/_full.segment.rsc
+ M .next/server/app/sobre.segments/_head.segment.rsc
+ M .next/server/app/sobre.segments/_index.segment.rsc
+ M .next/server/app/sobre.segments/_tree.segment.rsc
+ M .next/server/app/sobre.segments/sobre.segment.rsc
+ M .next/server/app/sobre.segments/sobre/__PAGE__.segment.rsc
+ M .next/server/pages/404.html
+ M .next/server/pages/500.html
+ D .next/static/jHc8Vm_8NRdCPj1LgZQDn/_buildManifest.js
+ D .next/static/jHc8Vm_8NRdCPj1LgZQDn/_clientMiddlewareManifest.json
+ D .next/static/jHc8Vm_8NRdCPj1LgZQDn/_ssgManifest.js
+ M .next/trace
+ M .next/trace-build
+ M package-lock.json
+ M src/.DS_Store
+ M src/components/.DS_Store
+ M yarn.lock
+?? .next/dev/server/chunks/ssr/[root-of-the-server]__29ccb2e8._.js
+?? .next/dev/server/chunks/ssr/[root-of-the-server]__29ccb2e8._.js.map
+?? .next/dev/server/chunks/ssr/node_modules_a1552e0a._.js
+?? .next/dev/server/chunks/ssr/node_modules_a1552e0a._.js.map
+?? .next/dev/server/chunks/ssr/node_modules_framer-motion_dist_es_f0db8889._.js
+?? .next/dev/server/chunks/ssr/node_modules_framer-motion_dist_es_f0db8889._.js.map
+?? .next/dev/server/chunks/ssr/node_modules_motion-dom_dist_es_6ed8e69b._.js
+?? .next/dev/server/chunks/ssr/node_modules_motion-dom_dist_es_6ed8e69b._.js.map
+?? .next/dev/server/chunks/ssr/node_modules_next_dist_8549d05c._.js
+?? .next/dev/server/chunks/ssr/node_modules_next_dist_8549d05c._.js.map
+?? .next/dev/static/chunks/node_modules_917a4ff4._.js
+?? .next/dev/static/chunks/node_modules_917a4ff4._.js.map
+?? .next/static/FGxrzbSQd97E8_9g6ZkBE/
+?? project-report-20251204-082349.txt
+?? src/app/.DS_Store
+
+-------------------------------------------
+### Lint (npm run lint)
+
+$ npm run lint
+
+> danilo-novais-portfolio-backup@0.0.0 lint
+> eslint . --ext .ts,.tsx,.js,.jsx
+
+(node:37226) ESLintIgnoreWarning: The ".eslintignore" file is no longer supported. Switch to using the "ignores" property in "eslint.config.js": https://eslint.org/docs/latest/use/configure/migration-guide#ignoring-files
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Oops! Something went wrong! :(
+
+ESLint: 9.39.1
+
+ESLint couldn't find an eslint.config.(js|mjs|cjs) file.
+
+From ESLint v9.0.0, the default configuration file is now eslint.config.js.
+If you are using a .eslintrc.* file, please follow the migration guide
+to update your configuration file to the new format:
+
+https://eslint.org/docs/latest/use/configure/migration-guide
+
+If you still have problems after following the migration guide, please stop by
+https://eslint.org/chat/help to chat with the team.
+
+
+-------------------------------------------
+### Testes (npm run test)
+
+$ npm run test
+
+> danilo-novais-portfolio-backup@0.0.0 test
+> jest --passWithNoTests
+
+No tests found, exiting with code 0
+
+-------------------------------------------
+### Dependências desatualizadas
+
+$ yarn outdated
+yarn outdated v1.22.22
+info Color legend : 
+ "<red>"    : Major Update backward-incompatible updates 
+ "<yellow>" : Minor Update backward-compatible features 
+ "<green>"  : Patch Update backward-compatible bug fixes
+Package                Current Wanted Latest Package Type URL                           
+@dataconnect/generated 1.0.0   exotic exotic dependencies file:src/dataconnect-generated
+Done in 1.71s.
+
+-------------------------------------------
+### Depcheck (dependências não usadas / faltando)
+
+$ npx depcheck
+Unused dependencies
+* @dataconnect/generated
+* @use-gesture/react
+* leva
+* r3f-perf
+* three-mesh-bvh
+* three-stdlib
+Unused devDependencies
+* @testing-library/jest-dom
+* @testing-library/react
+* @testing-library/user-event
+* @types/jest
+* @vitejs/plugin-legacy
+* @vitejs/plugin-react
+* autoprefixer
+* eslint-plugin-react-hooks
+* postcss
+* ts-jest
+* vite
+
+-------------------------------------------
+### Observações
+Use este relatório para colar em uma IA (Codex/ChatGPT) e pedir:
+- Sugestões para corrigir erros de lint e testes;
+- Ajustes de dependências desatualizadas ou não utilizadas;
+- Refatorações sugeridas com base nos erros.
+
