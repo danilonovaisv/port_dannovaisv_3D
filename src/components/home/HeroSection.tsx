@@ -8,7 +8,6 @@ import {
     MeshTransmissionMaterial,
     PerspectiveCamera,
     useGLTF,
-    useCubeTexture,
 } from '@react-three/drei';
 import * as THREE from 'three';
 import {
@@ -31,12 +30,6 @@ const GlassOrbInner: React.FC<GlassOrbProps> = ({ reducedMotion }) => {
     // Adjusted path to match actual file name
     const gltf = useGLTF('/media/Torus_dan.glb') as any;
     const meshRef = useRef<THREE.Mesh>(null);
-
-    // Note: Ensure /media/cubemap/ exists with these files, or this might fail/warn.
-    const envMap = useCubeTexture(
-        ['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'],
-        { path: '/media/cubemap/' },
-    );
 
     const geometry = React.useMemo(() => {
         let firstMesh: THREE.Mesh | null = null;
@@ -101,7 +94,6 @@ const GlassOrbInner: React.FC<GlassOrbProps> = ({ reducedMotion }) => {
                     attenuationColor="#80b9ff"
                     attenuationDistance={0.65}
                     envMapIntensity={1.2}
-                    envMap={envMap}
                 />
             </mesh>
         </group>
