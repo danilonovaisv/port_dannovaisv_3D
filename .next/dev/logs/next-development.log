@@ -1,10 +1,5 @@
-[00:00:00.741] Server  LOG      ✓ Ready in 519ms
-[00:00:04.996] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
-[00:00:04.996] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
-[00:00:05.115] Browser ERROR   Can't perform a React state update on a component that hasn't mounted yet. This indicates that you have a side-effect in your render function that asynchronously tries to update the component. Move this work to useEffect instead.
-[00:00:05.115] Browser ERROR   uncaughtError: TypeError: undefined is not an object (evaluating 'value.on')
-[00:01:26.933] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:01:26.944] Server  LOG      ✓ Compiled in 64ms
-[00:01:29.263] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
-[00:01:29.263] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
-[00:01:30.179] Browser WARN    value.onChange(callback) is deprecated. Switch to value.on("change", callback).
+[00:00:00.861] Server  LOG      ✓ Ready in 615ms
+[00:00:06.860] Browser ERROR   uncaughtError: SyntaxError: Unexpected token ':'
+[00:00:07.066] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:00:07.066] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:00:07.295] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.

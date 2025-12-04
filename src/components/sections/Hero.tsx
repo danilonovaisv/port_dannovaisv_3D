@@ -1,159 +1,203 @@
 'use client';
 
-import {
-    type MotionValue,
-    motion,
-    useScroll,
-    useTransform,
-} from 'framer-motion';
+import { motion, useMotionValueEvent, useScroll, useTransform, Variants } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import dynamic from 'next/dynamic';
-import type { RefObject } from 'react';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
+import { ASSETS } from '@/lib/constants';
+import HeroGlassCanvas from '@/components/three/HeroGlassCanvas';
 
-const HeroGlassCanvas = dynamic(
-  () => import('@/components/three/HeroGlassCanvas'),
-  { ssr: false }
-);
+const AnimatedTextLine: React.FC<{
+  text: string;
+  className?: string;
+  delay?: number;
+  colorClass?: string;
+}> = ({ text, className, delay = 0, colorClass = 'text-[#111111]' }) => {
+  const letters = text.split('');
 
-function useHeroScroll(sectionRef: RefObject<HTMLElement>) {
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end start'],
-  });
+  const container: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.03,
+        delayChildren: delay,
+      },
+    },
+  };
 
-  const orbOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const brandY = useTransform(scrollYProgress, [0, 3], [0, 40]);
-
-  return { scrollYProgress, orbOpacity, brandY };
-}
-
-export default function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress, orbOpacity, brandY } = useHeroScroll(sectionRef);
-
-  const navItems = ['home', 'sobre', 'portfolio', 'contato'];
+  const child: Variants = {
+    hidden: {
+      y: '110%',
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 1.0, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-[#f5f7fb]"
+    <motion.div
+      className={`flex overflow-hidden ${className}`}
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
     >
-      {/* HEADER */}
-      <header className="mx-auto flex max-w-6xl items-center justify-between px-6 pt-6 md:px-10">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-blue-500/40 bg-white">
-            {/* Logo minimal */}
-            <div className="h-6 w-6 rounded-xl border border-blue-500/70" />
-          </div>
-          <span className="text-lg font-semibold tracking-tight text-slate-900">
-            Danilo
-          </span>
-        </div>
+      {letters.map((letter, index) => (
+        <motion.span key={index} variants={child} className={`block ${colorClass} leading-[0.9]`}>
+          {letter === ' ' ? '\u00A0' : letter}
+        </motion.span>
+      ))}
+    </motion.div>
+  );
+};
 
-        <nav className="hidden gap-8 text-sm font-medium text-blue-600 md:flex">
-          {navItems.map((item) => (
-            <button
-              key={item}
-              className="group relative lowercase tracking-wide transition hover:text-blue-700"
-            >
-              <span>{item}</span>
-              <span className="pointer-events-none absolute inset-x-0 -bottom-1 h-[1px] origin-left scale-x-0 bg-blue-600 transition-transform duration-200 group-hover:scale-x-100" />
-            </button>
-          ))}
-        </nav>
-      </header>
+const Hero: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-      {/* HERO GRID */}
-      <main className="mx-auto flex max-w-6xl flex-col gap-10 px-6 pb-20 pt-14 md:flex-row md:items-center md:px-10">
-        {/* Coluna esquerda – texto */}
-        <div className="flex-1 space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="space-y-3"
-          >
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end end'],
+  });
 
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = latest <= 0.01;
+  });
 
-            <h1 className="text-4xl font-black leading-tight text-blue-600 md:text-5xl lg:text-6xl">
-              Design,
-              <br />
-              <span className="text-slate-900">não é só estética.</span>
-            </h1>
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+  const contentScale = useTransform(scrollYProgress, [0, 0.15], [1, 0.95]);
+  const contentY = useTransform(scrollYProgress, [0, 0.15], [0, -50]);
 
-            <p className="max-w-xl text-sm text-slate-500 md:text-base">
-              [É intenção, é estratégia, é experiência.]
-            </p>
-          </motion.div>
+  const videoScale = useTransform(scrollYProgress, [0, 0.25], [0.25, 1]);
+  const videoX = useTransform(scrollYProgress, [0, 0.25], ['35%', '0%']);
+  const videoY = useTransform(scrollYProgress, [0, 0.25], ['30%', '0%']);
+  const videoRadius = useTransform(scrollYProgress, [0, 0.2], [12, 0]);
 
-          <motion.div
-            className="flex flex-wrap items-center gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.6, ease: 'easeOut' }}
-          >
-            <motion.button
-              whileHover={{ scale: 1.04, y: -1 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-3 rounded-full bg-blue-600 px-6 py-3 text-sm font-medium text-white shadow-lg shadow-blue-500/30"
-            >
-              get to know me better
-              <ArrowRight className="h-4 w-4" />
-            </motion.button>
-
-            <span className="text-xs uppercase tracking-[0.2em] text-slate-500">
-              brand awareness
-            </span>
-          </motion.div>
-        </div>
-
-        {/* Coluna central – orb 3D */}
+  return (
+    <section id="hero" ref={sectionRef} className="relative h-[450vh] w-full bg-[#F4F5F7]">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
         <motion.div
-          style={{ opacity: orbOpacity as MotionValue<number> }}
-          className="relative flex-[0.9]"
-          initial={{ opacity: 0, scale: 0.85, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.7, ease: 'easeOut' }}
+          style={{ opacity: contentOpacity, scale: contentScale, y: contentY }}
+          className="absolute inset-0 container mx-auto px-6 md:px-12 lg:px-16 h-full z-10"
         >
-          <div className="pointer-events-auto mx-auto aspect-square w-full max-w-xl">
-            <HeroGlassCanvas scrollYProgress={scrollYProgress} />
+          <div className="flex flex-col items-center justify-center gap-16 min-h-[80vh] h-full pt-24 md:pt-0 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col items-center gap-6 w-full max-w-2xl relative"
+            >
+              <span className="text-[#0057FF] text-sm md:text-base tracking-[0.4em] uppercase">
+                [ BRAND AWARENESS ]
+              </span>
+
+              <div className="w-full h-[35vh] md:h-[50vh] flex items-center justify-center">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full h-full"
+                >
+                  <HeroGlassCanvas />
+                </motion.div>
+              </div>
+            </motion.div>
+
+            <div className="flex flex-col items-center gap-6 w-full max-w-3xl">
+              <div className="text-[4rem] md:text-6xl lg:text-[6.5rem] font-extrabold tracking-[-0.04em] font-sans flex flex-col items-center gap-2 leading-[0.9]">
+                <div className="md:hidden flex flex-col">
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-[#0057FF]"
+                  >
+                    Design,
+                  </motion.span>
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-[#111111]"
+                  >
+                    não é só
+                  </motion.span>
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    className="text-[#111111]"
+                  >
+                    estética.
+                  </motion.span>
+                </div>
+
+                <div className="hidden md:flex flex-col items-center gap-0">
+                  <AnimatedTextLine text="Design," delay={0.2} colorClass="text-[#0057FF]" className="text-center" />
+                  <AnimatedTextLine text="não é só" delay={0.5} colorClass="text-[#111111]" className="text-center" />
+                  <AnimatedTextLine text="estética." delay={0.8} colorClass="text-[#111111]" className="text-center" />
+                </div>
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: 'easeOut', delay: 1.2 }}
+                className="mb-4 md:mb-6"
+              >
+                <p className="text-[#0057FF] text-lg md:text-xl font-medium tracking-wide">
+                  [ É intenção, é estratégia, é experiência. ]
+                </p>
+              </motion.div>
+
+              <motion.a
+                href="/sobre"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 1.4 }}
+                whileHover={{ scale: 1.05, boxShadow: '0 10px 30px -10px rgba(0, 87, 255, 0.5)' }}
+                whileTap={{ scale: 0.98 }}
+                className="group bg-[#0057FF] text-white rounded-full pl-8 pr-6 py-4 flex items-center gap-3 font-semibold text-base md:text-lg shadow-xl shadow-[#0057FF]/20 transition-all"
+              >
+                get to know me better
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20 group-hover:bg-white/30 transition-colors">
+                  <ArrowRight className="w-4 h-4 text-white" />
+                </span>
+              </motion.a>
+            </div>
           </div>
         </motion.div>
 
-        {/* Coluna direita – cards / brand block */}
-        <motion.aside
-          className="hidden flex-[0.7] flex-col gap-6 md:flex"
-          style={{ y: brandY }}
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.25, duration: 0.6, ease: 'easeOut' }}
+        <motion.div
+          style={{
+            scale: videoScale,
+            x: videoX,
+            y: videoY,
+            borderRadius: videoRadius,
+          }}
+          className="absolute z-40 w-full h-full flex items-center justify-center overflow-hidden shadow-2xl origin-center bg-black"
         >
-          <div className="rounded-3xl border border-blue-500/40 bg-white/60 px-6 py-5 text-xs font-medium uppercase tracking-[0.25em] text-blue-600">
-            [ BRAND AWARENESS ]
+          <div className="relative w-full h-full block group">
+            <video
+              ref={videoRef}
+              src={ASSETS.videoManifesto}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover transition-opacity duration-500"
+            />
           </div>
-
-          <div className="relative rounded-3xl border border-cyan-300/80 bg-cyan-100/40 p-2 shadow-lg shadow-cyan-500/30">
-            <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-900/90">
-              {/* Placeholder – substituir por imagem real depois */}
-              <div className="flex h-full w-full items-center justify-center text-[10px] font-medium uppercase tracking-[0.2em] text-slate-200">
-                strategy • product • brand
-              </div>
-            </div>
-          </div>
-        </motion.aside>
-      </main>
-
-      {/* Indicador de scroll */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.8 }}
-        transition={{ delay: 1, duration: 0.8 }}
-        className="pointer-events-none absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-slate-400"
-      >
-        <span>scroll</span>
-        <div className="h-12 w-[1px] bg-gradient-to-b from-slate-400 to-transparent" />
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
-}
+};
+
+export default Hero;

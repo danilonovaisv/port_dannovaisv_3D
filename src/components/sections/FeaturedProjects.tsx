@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import React, { useRef } from 'react';
 import { FEATURED_PROJECTS } from '../../lib/constants';
-import HeroGlassCanvas from '../three/HeroGlassCanvas';
 
 const FeaturedProjects: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -120,14 +119,6 @@ const FeaturedProjects: React.FC = () => {
 
         </div>
       </div>
-
-      {/* Globo Iridescente 3D (Bottom Right) */}
-      <motion.div
-        style={{ y: yGlobo }}
-        className="absolute -bottom-20 -right-20 w-[300px] h-[300px] md:w-[600px] md:h-[600px] z-0 pointer-events-auto opacity-60 mix-blend-multiply"
-      >
-        <HeroGlassCanvas />
-      </motion.div>
 
     </section>
   );
