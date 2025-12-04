@@ -2,12 +2,9 @@
 
 import { Environment } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import {
-    type MotionValue,
-    useMotionValueEvent,
-} from 'framer-motion';
+import { type MotionValue } from 'framer-motion';
 import type { PointerEvent } from 'react';
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import GlassOrb from './GlassOrb';
 
 type PointerState = {
@@ -17,7 +14,7 @@ type PointerState = {
 };
 
 type HeroGlassCanvasProps = {
-  scrollYProgress: MotionValue<number>;
+  scrollYProgress?: MotionValue<number>;
 };
 
 export default function HeroGlassCanvas({
@@ -30,10 +27,17 @@ export default function HeroGlassCanvas({
     active: false,
   });
 
-  // Sincroniza scroll do Framer Motion com a cena 3D
-  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    setScroll(latest);
-  });
+  useEffect(() => {
+    if (!scrollYProgress) {
+      return undefined;
+    }
+
+    const unsubscribe = scrollYProgress.onChange((latest) => {
+      setScroll(latest);
+    });
+
+    return unsubscribe;
+  }, [scrollYProgress]);
 
   function handlePointerMove(e: PointerEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
