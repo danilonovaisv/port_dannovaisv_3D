@@ -2,8 +2,8 @@
 'use client'
 
 import React from 'react'
-import { useGLTF, CubeCamera, useCubeTexture } from '@react-three/drei'
-import { MeshRefractionMaterial } from './materials/MeshRefractionMaterial'
+import { useGLTF, CubeCamera } from '@react-three/drei'
+import { MeshRefractionMaterial } from '../materials/MeshRefractionMaterial'
 
 const MODEL_PATH = '/media/Torus_dan.glb'
 
