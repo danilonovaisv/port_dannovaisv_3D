@@ -1,11 +1,11 @@
 /** biome-ignore-all lint/correctness/useUniqueElementIds: <explanation> */
 'use client';
 
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, Variants, useMotionValueEvent } from 'framer-motion';
-import dynamic from 'next/dynamic';
-import { ArrowRight } from 'lucide-react';
 import { ASSETS } from '@/lib/constants';
+import { motion, useMotionValueEvent, useScroll, useTransform, Variants } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import dynamic from 'next/dynamic';
+import React, { useRef } from 'react';
 
 const HeroGlassCanvas = dynamic(
   () => import('@/components/three/HeroGlassCanvas'),
@@ -111,7 +111,7 @@ const Hero: React.FC = () => {
     <section 
       id="hero" 
       ref={sectionRef}
-      className="relative h-[450vh] w-full bg-[#F4F5F7]" // Altura aumentada para criar o tempo de "pausa"
+      className="relative h-[450vh] w-full bg-[#F4F5F7]" // Increased height to create pause time
     >
       {/* Container Sticky para manter o conteúdo visível durante o scroll da seção */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
