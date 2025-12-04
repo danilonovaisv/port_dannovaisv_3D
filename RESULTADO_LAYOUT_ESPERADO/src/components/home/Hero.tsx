@@ -1,9 +1,9 @@
 
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, Variants, useMotionValueEvent } from 'framer-motion';
-import HeroGlassCanvas from '../../3d/HeroGlassCanvas';
+import { motion, useMotionValueEvent, useScroll, useTransform, Variants } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import React, { useRef } from 'react';
 import { ASSETS } from '../../lib/constants';
+import HeroGlassCanvas from '../three/HeroGlassCanvas';
 
 // Componente para animar texto letra por letra (efeito "digitação/reveal")
 const AnimatedTextLine: React.FC<{ 

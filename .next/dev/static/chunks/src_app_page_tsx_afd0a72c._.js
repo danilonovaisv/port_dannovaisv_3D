@@ -1,9 +1,17 @@
 (globalThis.TURBOPACK_CHUNK_LISTS || (globalThis.TURBOPACK_CHUNK_LISTS = [])).push({
     script: typeof document === "object" ? document.currentScript : undefined,
     chunks: [
-  "static/chunks/src_components_three_HeroGlassCanvas_tsx_a5c0338e._.js",
-  "static/chunks/node_modules_560f4f8b._.js",
-  "static/chunks/src_components_sections_Hero_tsx_bf2f63d9._.js"
+  "static/chunks/src_components_three_HeroGlassCanvas_tsx_5737c6aa._.js",
+  "static/chunks/src_465ad4db._.js",
+  "static/chunks/node_modules_motion-dom_dist_es_3f659a55._.js",
+  "static/chunks/node_modules_framer-motion_dist_es_9ca6bd75._.js",
+  "static/chunks/node_modules_react-reconciler_dd58c996._.js",
+  "static/chunks/node_modules_three_build_three_core_996ef05a.js",
+  "static/chunks/node_modules_three_build_three_module_0c59ee63.js",
+  "static/chunks/node_modules_three_build_three_module_f7d46d9b.js",
+  "static/chunks/node_modules_@react-three_fiber_dist_75fd0def._.js",
+  "static/chunks/node_modules_three-stdlib_1f08e6ce._.js",
+  "static/chunks/node_modules_137ffbad._.js"
 ],
     source: "dynamic"
 });

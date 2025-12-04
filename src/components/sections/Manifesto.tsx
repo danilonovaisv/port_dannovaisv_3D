@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ASSETS } from '../../lib/constants';
 import { AlertCircle } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { ASSETS } from '../../lib/constants';
 
 const Manifesto: React.FC = () => {
   const [hasError, setHasError] = useState(false);
