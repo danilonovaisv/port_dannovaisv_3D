@@ -30,11 +30,8 @@ const TorusDan = ({ variant = "transmission", ...props })=>{
     const { viewport } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$events$2d$1eccaf1c$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__C__as__useThree$3e$__["useThree"])();
     const [hovered, setHovered] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const { nodes } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Gltf$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useGLTF"])(GLB_PATH);
-    // Tenta vários nomes de nó comuns
-    const torusNode = nodes.Sphere002 || nodes.Torus002 || nodes.Torus001 || nodes.Torus || nodes.Retopo_Cube001;
+    const torusNode = nodes.Sphere002 || nodes.Torus002 || nodes.Torus001 || nodes.Torus;
     const baseScale = viewport.width / 3.5;
-    // Cubemap para o MeshRefractionMaterial
-    // Note: Ensure these files exist in public/media/cubemap/
     const envMap = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$CubeTexture$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCubeTexture"])([
         "px.png",
         "nx.png",
@@ -51,14 +48,11 @@ const TorusDan = ({ variant = "transmission", ...props })=>{
             const g = groupRef.current;
             if (!g || prefersReducedMotion) return;
             const t = state.clock.getElapsedTime();
-            // Rotação base contínua
             g.rotation.y += delta * 0.35;
-            // Parallax suave com o cursor
             const targetX = state.pointer.y * 0.3;
             const targetZ = -state.pointer.x * 0.4;
             g.rotation.x = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MathUtils"].lerp(g.rotation.x, targetX, 0.12);
             g.rotation.z = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MathUtils"].lerp(g.rotation.z, targetZ, 0.12);
-            // Float no eixo Y
             g.position.y = Math.sin(t * 0.6) * 0.08;
         }
     }["TorusDan.useFrame"]);
@@ -89,8 +83,8 @@ const TorusDan = ({ variant = "transmission", ...props })=>{
                 fastChroma: true
             }, void 0, false, {
                 fileName: "[project]/src/components/3d/Torus_dan.tsx",
-                lineNumber: 94,
-                columnNumber: 25
+                lineNumber: 95,
+                columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$MeshTransmissionMaterial$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshTransmissionMaterial"], {
                 transmission: 1,
                 thickness: hovered ? 0.6 : 0.4,
@@ -105,18 +99,18 @@ const TorusDan = ({ variant = "transmission", ...props })=>{
                 resolution: 512
             }, void 0, false, {
                 fileName: "[project]/src/components/3d/Torus_dan.tsx",
-                lineNumber: 104,
-                columnNumber: 25
+                lineNumber: 105,
+                columnNumber: 13
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/src/components/3d/Torus_dan.tsx",
-            lineNumber: 92,
-            columnNumber: 17
+            lineNumber: 93,
+            columnNumber: 9
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/src/components/3d/Torus_dan.tsx",
-        lineNumber: 84,
-        columnNumber: 9
+        lineNumber: 85,
+        columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
 _s(TorusDan, "nrs1xTPlT4xYXZYu/FHd58w7dWM=", false, function() {
@@ -159,9 +153,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-/**
- * Canvas + container responsivo da orb de vidro
- */ const HeroGlassCanvas = ()=>{
+const HeroGlassCanvas = ()=>{
     _s();
     const containerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const { scrollYProgress } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$value$2f$use$2d$scroll$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useScroll"])({
@@ -227,20 +219,20 @@ var _s = __turbopack_context__.k.signature();
                     className: "absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(37,99,235,.6),transparent_55%),radial-gradient(circle_at_80%_20%,rgba(236,72,153,.55),transparent_55%),radial-gradient(circle_at_50%_100%,rgba(56,189,248,.5),transparent_55%)] blur-3xl opacity-80 mix-blend-screen"
                 }, void 0, false, {
                     fileName: "[project]/src/components/3d/HeroGlassCanvas.tsx",
-                    lineNumber: 35,
-                    columnNumber: 17
+                    lineNumber: 31,
+                    columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/components/3d/HeroGlassCanvas.tsx",
-                lineNumber: 34,
-                columnNumber: 13
+                lineNumber: 30,
+                columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "pointer-events-none absolute inset-1 rounded-[40px] border border-white/15 bg-white/5 shadow-[0_0_120px_rgba(15,23,42,0.58)] backdrop-blur-3xl"
             }, void 0, false, {
                 fileName: "[project]/src/components/3d/HeroGlassCanvas.tsx",
-                lineNumber: 39,
-                columnNumber: 13
+                lineNumber: 34,
+                columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
                 className: "relative h-full w-full",
@@ -270,8 +262,8 @@ var _s = __turbopack_context__.k.signature();
                             ]
                         }, void 0, false, {
                             fileName: "[project]/src/components/3d/HeroGlassCanvas.tsx",
-                            lineNumber: 48,
-                            columnNumber: 21
+                            lineNumber: 43,
+                            columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("fog", {
                             attach: "fog",
@@ -282,15 +274,15 @@ var _s = __turbopack_context__.k.signature();
                             ]
                         }, void 0, false, {
                             fileName: "[project]/src/components/3d/HeroGlassCanvas.tsx",
-                            lineNumber: 49,
-                            columnNumber: 21
+                            lineNumber: 44,
+                            columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ambientLight", {
                             intensity: 0.4
                         }, void 0, false, {
                             fileName: "[project]/src/components/3d/HeroGlassCanvas.tsx",
-                            lineNumber: 51,
-                            columnNumber: 21
+                            lineNumber: 46,
+                            columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
                             intensity: 1.6,
@@ -301,8 +293,8 @@ var _s = __turbopack_context__.k.signature();
                             ]
                         }, void 0, false, {
                             fileName: "[project]/src/components/3d/HeroGlassCanvas.tsx",
-                            lineNumber: 52,
-                            columnNumber: 21
+                            lineNumber: 47,
+                            columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
                             intensity: 0.9,
@@ -313,8 +305,8 @@ var _s = __turbopack_context__.k.signature();
                             ]
                         }, void 0, false, {
                             fileName: "[project]/src/components/3d/HeroGlassCanvas.tsx",
-                            lineNumber: 53,
-                            columnNumber: 21
+                            lineNumber: 48,
+                            columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
                             intensity: 0.7,
@@ -325,37 +317,37 @@ var _s = __turbopack_context__.k.signature();
                             ]
                         }, void 0, false, {
                             fileName: "[project]/src/components/3d/HeroGlassCanvas.tsx",
-                            lineNumber: 54,
-                            columnNumber: 21
+                            lineNumber: 49,
+                            columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Environment$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Environment"], {
                             preset: "city"
                         }, void 0, false, {
                             fileName: "[project]/src/components/3d/HeroGlassCanvas.tsx",
-                            lineNumber: 56,
-                            columnNumber: 21
+                            lineNumber: 51,
+                            columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$3d$2f$Torus_dan$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                             fileName: "[project]/src/components/3d/HeroGlassCanvas.tsx",
-                            lineNumber: 58,
-                            columnNumber: 21
+                            lineNumber: 53,
+                            columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/3d/HeroGlassCanvas.tsx",
-                    lineNumber: 47,
-                    columnNumber: 17
+                    lineNumber: 42,
+                    columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/components/3d/HeroGlassCanvas.tsx",
-                lineNumber: 41,
-                columnNumber: 13
+                lineNumber: 36,
+                columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/3d/HeroGlassCanvas.tsx",
-        lineNumber: 25,
-        columnNumber: 9
+        lineNumber: 22,
+        columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
 _s(HeroGlassCanvas, "Fe87U1lFfGHH/wR+pdW44fhymIw=", false, function() {

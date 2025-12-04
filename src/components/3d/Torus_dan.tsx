@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { JSX, useRef, useState } from "react";
 import * as THREE from "three";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame, useThree, ThreeEvent } from "@react-three/fiber";
 import {
   MeshTransmissionMaterial,
   MeshRefractionMaterial,
@@ -12,6 +12,15 @@ import {
 
 type TorusDanProps = JSX.IntrinsicElements["group"] & {
   variant?: "transmission" | "refraction";
+};
+
+type GLTFResult = {
+  nodes: {
+    Sphere002?: THREE.Mesh;
+    Torus002?: THREE.Mesh;
+    Torus001?: THREE.Mesh;
+    Torus?: THREE.Mesh;
+  };
 };
 
 const GLB_PATH = "/media/Torus_dan.glb";
@@ -25,7 +34,7 @@ const TorusDan: React.FC<TorusDanProps> = ({
   const { viewport } = useThree();
   const [hovered, setHovered] = useState(false);
 
-  const { nodes } = useGLTF(GLB_PATH) as any;
+  const { nodes } = useGLTF(GLB_PATH) as unknown as GLTFResult;
 
   const torusNode: THREE.Mesh | undefined =
     (nodes.Sphere002 as THREE.Mesh) ||
@@ -62,12 +71,12 @@ const TorusDan: React.FC<TorusDanProps> = ({
     g.position.y = Math.sin(t * 0.6) * 0.08;
   });
 
-  const handlePointerOver = (e: any) => {
+  const handlePointerOver = (e: ThreeEvent<PointerEvent>) => {
     e.stopPropagation();
     setHovered(true);
   };
 
-  const handlePointerOut = (e: any) => {
+  const handlePointerOut = (e: ThreeEvent<PointerEvent>) => {
     e.stopPropagation();
     setHovered(false);
   };
