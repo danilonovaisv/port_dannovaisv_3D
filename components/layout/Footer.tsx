@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { NAV_LINKS, SOCIALS } from '../../lib/constants';
 
 const Footer: React.FC = () => {
@@ -14,12 +15,12 @@ const Footer: React.FC = () => {
           <ul className="flex flex-wrap justify-center gap-6 md:gap-8">
             {NAV_LINKS.map((link) => (
               <li key={link.label}>
-                <a 
+                <Link
                   href={link.href}
                   className="text-sm font-medium hover:text-white/70 transition-colors lowercase"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
