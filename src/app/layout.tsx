@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   description: 'Design, não é só estética. É intenção, estratégia e experiência.',
 };
 
+import Header from '@/components/layout/Header';
+
 export default function RootLayout({
   children,
 }: {
@@ -14,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className="bg-[#f5f7fb] text-slate-900 antialiased">
+        <Header />
         {children}
       </body>
     </html>
