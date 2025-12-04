@@ -1,0 +1,97 @@
+===========================================
+ Projeto: port_dannovaisv_3D
+ Data: Thu Dec  4 10:04:54 -03 2025
+ Package manager detectado: yarn
+===========================================
+
+### Ambiente
+
+$ node -v
+v24.11.1
+
+$ npm -v
+11.6.2
+
+Sistema operacional:
+Darwin danilo-novais.local 25.2.0 Darwin Kernel Version 25.2.0: Tue Nov 18 21:09:40 PST 2025; root:xnu-12377.61.12~1/RELEASE_ARM64_T6000 arm64
+
+-------------------------------------------
+### Git status
+
+$ git status -sb
+## main...origin/main
+ M package.json
+ M yarn.lock
+?? project-report-20251204-100454.txt
+
+-------------------------------------------
+### Lint (npm run lint)
+
+$ npm run lint
+
+> danilo-novais-portfolio@0.0.0 lint
+> eslint . --ext .ts,.tsx,.js,.jsx
+
+(node:5278) ESLintIgnoreWarning: The ".eslintignore" file is no longer supported. Switch to using the "ignores" property in "eslint.config.js": https://eslint.org/docs/latest/use/configure/migration-guide#ignoring-files
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Oops! Something went wrong! :(
+
+ESLint: 9.39.1
+
+ESLint couldn't find an eslint.config.(js|mjs|cjs) file.
+
+From ESLint v9.0.0, the default configuration file is now eslint.config.js.
+If you are using a .eslintrc.* file, please follow the migration guide
+to update your configuration file to the new format:
+
+https://eslint.org/docs/latest/use/configure/migration-guide
+
+If you still have problems after following the migration guide, please stop by
+https://eslint.org/chat/help to chat with the team.
+
+
+-------------------------------------------
+### Testes (npm run test)
+
+$ npm run test
+
+> danilo-novais-portfolio@0.0.0 test
+> jest --passWithNoTests
+
+No tests found, exiting with code 0
+
+-------------------------------------------
+### Dependências desatualizadas
+
+$ yarn outdated
+yarn outdated v1.22.22
+(node:5370) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Done in 1.08s.
+
+-------------------------------------------
+### Depcheck (dependências não usadas / faltando)
+
+$ npx depcheck
+Unused dependencies
+* @studio-freight/lenis
+* @tanstack/react-query
+* autoprefixer
+* postcss
+* zustand
+Unused devDependencies
+* @testing-library/jest-dom
+* @testing-library/react
+* @testing-library/user-event
+* @types/jest
+* @types/react-dom
+* ts-jest
+
+-------------------------------------------
+### Observações
+Use este relatório para colar em uma IA (Codex/ChatGPT) e pedir:
+- Sugestões para corrigir erros de lint e testes;
+- Ajustes de dependências desatualizadas ou não utilizadas;
+- Refatorações sugeridas com base nos erros.
+
