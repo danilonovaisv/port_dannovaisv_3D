@@ -1,11 +1,10 @@
 'use client';
 
 import React from 'react';
-
 import { MeshTransmissionMaterial, useGLTF } from '@react-three/drei';
-// import { GroupProps } from '@react-three/fiber';
 import * as THREE from 'three';
 
+// 使用来自 @react-three/fiber 的类型定义，更符合 R3F 生态
 type GroupProps = React.JSX.IntrinsicElements['group'];
 
 type GLTFResult = {
