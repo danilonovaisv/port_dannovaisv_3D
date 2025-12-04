@@ -1,11 +1,9 @@
+
 'use client';
 
 import { Environment } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import type { MotionValue } from 'framer-motion';
-
-;
-
+import { type MotionValue } from 'framer-motion';
 import type { PointerEvent } from 'react';
 import { Suspense, useEffect, useState } from 'react';
 import GlassOrb from './GlassOrb';
@@ -20,38 +18,21 @@ type HeroGlassCanvasProps = {
   scrollYProgress?: MotionValue<number>;
 };
 
-export default function HeroGlassCanvas({
-  scrollYProgress,
-}: HeroGlassCanvasProps) {
+export default function HeroGlassCanvas({ scrollYProgress }: HeroGlassCanvasProps) {
   const [scroll, setScroll] = useState(0);
-  const [pointer, setPointer] = useState<PointerState>({
-    x: 0,
-    y: 0,
-    active: false,
-  });
+  const [pointer, setPointer] = useState<PointerState>({ x: 0, y: 0, active: false });
 
   useEffect(() => {
-    if (!scrollYProgress) {
-      return undefined;
-    }
-
-    const unsubscribe = scrollYProgress.onChange((latest) => {
-      setScroll(latest);
-    });
-
+    if (!scrollYProgress) return;
+    const unsubscribe = scrollYProgress.onChange(setScroll);
     return unsubscribe;
   }, [scrollYProgress]);
 
   function handlePointerMove(e: PointerEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 2 - 1; // -1..1
-    const y = ((e.clientY - rect.top) / rect.height) * 2 - 1; // -1..1
-
-    setPointer({
-      x,
-      y,
-      active: true,
-    });
+    const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    const y = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+    setPointer({ x, y, active: true });
   }
 
   function handlePointerLeave() {
@@ -60,7 +41,7 @@ export default function HeroGlassCanvas({
 
   return (
     <div
-      className="h-full w-full"
+      className="absolute inset-0 z-0 pointer-events-none"
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
     >
@@ -71,7 +52,7 @@ export default function HeroGlassCanvas({
       >
         <Suspense fallback={null}>
           <GlassOrb pointer={pointer} scroll={scroll} />
-          <Environment preset="city" background blur={0.8} />
+          <Environment preset="studio" background={false} />
         </Suspense>
       </Canvas>
     </div>

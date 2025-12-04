@@ -1,2 +1,23 @@
-[00:00:00.759] Server  LOG      ✓ Ready in 514ms
-[00:00:05.670] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:00:00.700] Server  LOG      ✓ Ready in 458ms
+[00:00:04.179] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:00:04.179] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:00:04.450] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:02:02.100] Server  LOG      ✓ Compiled in 6ms
+[00:08:02.965] Server  LOG      ✓ Compiled in 4ms
+[00:10:47.733] Server  LOG      ✓ Compiled in 4ms
+[00:11:37.061] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:11:37.061] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:11:37.270] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:17:53.844] Server  LOG      ✓ Compiled in 16ms
+[00:17:55.260] Browser LOG     THREE.WebGLRenderer: Context Lost.
+[00:18:17.154] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:18:17.154] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:18:17.322] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:22:54.518] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:22:54.776] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:22:54.776] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:22:54.940] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:30:20.006] Server  LOG      ✓ Compiled in 11ms
+[00:30:26.073] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:30:26.073] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:30:26.181] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.

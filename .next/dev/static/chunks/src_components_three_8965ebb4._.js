@@ -29,31 +29,31 @@ function TorusDan(props) {
                 backside: true,
                 samples: 30,
                 resolution: 1024,
-                thickness: 0.7,
+                thickness: 1,
                 roughness: 0.05,
                 transmission: 1,
-                ior: 2.2,
-                chromaticAberration: 0.2,
-                anisotropy: 0.15,
-                distortion: 0.35,
-                distortionScale: 0.7,
-                temporalDistortion: 0.35,
+                ior: 2.3,
+                chromaticAberration: 0.3,
+                anisotropy: 0.3,
+                distortion: 0.4,
+                distortionScale: 0.8,
+                temporalDistortion: 0.4,
                 attenuationColor: "#ffffff",
                 attenuationDistance: 0.5,
-                envMapIntensity: 0.5
+                envMapIntensity: 1.0
             }, void 0, false, {
                 fileName: "[project]/src/components/three/TorusDan.tsx",
-                lineNumber: 31,
+                lineNumber: 26,
                 columnNumber: 21
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/three/TorusDan.tsx",
-            lineNumber: 26,
+            lineNumber: 25,
             columnNumber: 17
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/three/TorusDan.tsx",
-        lineNumber: 24,
+        lineNumber: 23,
         columnNumber: 9
     }, this);
 }
@@ -97,21 +97,18 @@ function GlassOrb({ pointer, scroll }) {
             const group = groupRef.current;
             if (!group) return;
             const t = state.clock.getElapsedTime();
-            // Rotação base (idle)
             const idleRotationY = t * 0.25;
             const floatOffset = Math.sin(t * 0.9) * 0.08;
             const scrollOffset = -scroll * 0.6;
-            // Tilt pelo cursor
             const targetTiltX = pointer.active ? pointer.y * 0.35 : 0;
             const targetTiltY = pointer.active ? pointer.x * 0.5 : 0;
             group.rotation.x = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MathUtils"].lerp(group.rotation.x, targetTiltX - 0.4, 0.08);
             group.rotation.y = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MathUtils"].lerp(group.rotation.y, idleRotationY + targetTiltY, 0.08);
-            // Parallax de posição (x,y)
             const targetX = pointer.active ? pointer.x * 0.3 : 0;
             const targetY = floatOffset + scrollOffset;
+            // ✅ orb mais centralizada (não colada no topo)
             group.position.x = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MathUtils"].lerp(group.position.x, targetX, 0.08);
-            group.position.y = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MathUtils"].lerp(group.position.y, targetY, 0.1);
-            // Scale reage ao scroll (some aos poucos)
+            group.position.y = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MathUtils"].lerp(group.position.y, targetY + 0.5, 0.1);
             const baseScale = 1;
             const targetScale = baseScale * (1 - scroll * 0.3);
             const s = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MathUtils"].lerp(group.scale.x || 1, targetScale, 0.1);
@@ -124,19 +121,19 @@ function GlassOrb({ pointer, scroll }) {
                 ref: groupRef,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$three$2f$TorusDan$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/src/components/three/GlassOrb.tsx",
-                    lineNumber: 75,
+                    lineNumber: 54,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/three/GlassOrb.tsx",
-                lineNumber: 74,
+                lineNumber: 53,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ambientLight", {
                 intensity: 0.4
             }, void 0, false, {
                 fileName: "[project]/src/components/three/GlassOrb.tsx",
-                lineNumber: 79,
+                lineNumber: 56,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
@@ -148,7 +145,7 @@ function GlassOrb({ pointer, scroll }) {
                 ]
             }, void 0, false, {
                 fileName: "[project]/src/components/three/GlassOrb.tsx",
-                lineNumber: 80,
+                lineNumber: 57,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("spotLight", {
@@ -162,7 +159,7 @@ function GlassOrb({ pointer, scroll }) {
                 penumbra: 0.5
             }, void 0, false, {
                 fileName: "[project]/src/components/three/GlassOrb.tsx",
-                lineNumber: 84,
+                lineNumber: 58,
                 columnNumber: 7
             }, this)
         ]
@@ -209,14 +206,8 @@ function HeroGlassCanvas({ scrollYProgress }) {
     });
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "HeroGlassCanvas.useEffect": ()=>{
-            if (!scrollYProgress) {
-                return undefined;
-            }
-            const unsubscribe = scrollYProgress.onChange({
-                "HeroGlassCanvas.useEffect.unsubscribe": (latest)=>{
-                    setScroll(latest);
-                }
-            }["HeroGlassCanvas.useEffect.unsubscribe"]);
+            if (!scrollYProgress) return;
+            const unsubscribe = scrollYProgress.onChange(setScroll);
             return unsubscribe;
         }
     }["HeroGlassCanvas.useEffect"], [
@@ -224,8 +215,8 @@ function HeroGlassCanvas({ scrollYProgress }) {
     ]);
     function handlePointerMove(e) {
         const rect = e.currentTarget.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width * 2 - 1; // -1..1
-        const y = (e.clientY - rect.top) / rect.height * 2 - 1; // -1..1
+        const x = (e.clientX - rect.left) / rect.width * 2 - 1;
+        const y = (e.clientY - rect.top) / rect.height * 2 - 1;
         setPointer({
             x,
             y,
@@ -239,7 +230,7 @@ function HeroGlassCanvas({ scrollYProgress }) {
             }));
     }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "h-full w-full",
+        className: "absolute inset-0 z-0 pointer-events-none",
         onPointerMove: handlePointerMove,
         onPointerLeave: handlePointerLeave,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
@@ -267,34 +258,35 @@ function HeroGlassCanvas({ scrollYProgress }) {
                         scroll: scroll
                     }, void 0, false, {
                         fileName: "[project]/src/components/three/HeroGlassCanvas.tsx",
-                        lineNumber: 73,
+                        lineNumber: 54,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Environment$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Environment"], {
-                        preset: "studio"
+                        preset: "studio",
+                        background: false
                     }, void 0, false, {
                         fileName: "[project]/src/components/three/HeroGlassCanvas.tsx",
-                        lineNumber: 74,
+                        lineNumber: 55,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/three/HeroGlassCanvas.tsx",
-                lineNumber: 72,
+                lineNumber: 53,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/three/HeroGlassCanvas.tsx",
-            lineNumber: 67,
+            lineNumber: 48,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/three/HeroGlassCanvas.tsx",
-        lineNumber: 62,
+        lineNumber: 43,
         columnNumber: 5
     }, this);
 }
-_s(HeroGlassCanvas, "eI3j80uB60eZlcQypHoH61WaJwc=");
+_s(HeroGlassCanvas, "JWL8SWH6MDrn3fCQ13hZwdEm5Z8=");
 _c = HeroGlassCanvas;
 var _c;
 __turbopack_context__.k.register(_c, "HeroGlassCanvas");

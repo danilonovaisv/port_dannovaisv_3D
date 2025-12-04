@@ -29,6 +29,7 @@
     "react-dom": "^19.2.1",
     "resize-observer-polyfill": "^1.5.1",
     "three": "^0.181.2",
+    "three-mesh-bvh": "^0.9.3",
     "three-stdlib": "^2.36.1"
   },
   "devDependencies": {
