@@ -1,0 +1,204 @@
+[00:00:00.551] Server  LOG      ✓ Ready in 348ms
+[00:00:04.030] Server  ERROR    ⨯ ./src/app/globals.css
+Error evaluating Node.js code
+Error: Cannot find module '../pkg'
+    [at <anonymous> (turbopack:///[project]/node_modules/lightningcss/node/index.js:17:17)]
+    [at module evaluation (turbopack:///[project]/node_modules/lightningcss/node/index.js:17:17)]
+    [at instantiateModule (turbopack:///[turbopack]/nodejs/runtime.ts:228:5)]
+    [at getOrInstantiateModuleFromParent (turbopack:///[turbopack]/nodejs/runtime.ts:261:10)]
+    [at Context.esmImport (turbopack:///[turbopack]/shared/runtime-utils.ts:347:18)]
+    [at module evaluation (turbopack:///[project]/node_modules/lightningcss/node/index.mjs:1:1)]
+    [at instantiateModule (turbopack:///[turbopack]/nodejs/runtime.ts:228:5)]
+    [at getOrInstantiateModuleFromParent (turbopack:///[turbopack]/nodejs/runtime.ts:261:10)]
+    [at Context.esmImport (turbopack:///[turbopack]/shared/runtime-utils.ts:347:18)]
+    [at module evaluation (turbopack:///[project]/node_modules/@tailwindcss/node/dist/index.mjs:15:181)]
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+
+
+
+./node_modules/lightningcss/node/index.js:22:22
+Module not found: Can't resolve '../lightningcss.' <dynamic> '.node'
+  20 |     module.exports = require(`lightningcss-${parts.join('-')}`);
+  21 |   } catch (err) {
+> 22 |     module.exports = require(`../lightningcss.${parts.join('-')}.node`);
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  23 |   }
+  24 | }
+  25 |
+
+
+
+Import trace:
+  postcss:
+    ./node_modules/lightningcss/node/index.js
+    ./node_modules/lightningcss/node/index.mjs
+    ./node_modules/@tailwindcss/node/dist/index.mjs
+    ./node_modules/@tailwindcss/postcss/dist/index.mjs
+    ./postcss.config.mjs
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./node_modules/lightningcss/node/index.js:17:20
+Module not found: Can't resolve '../pkg'
+  15 |
+  16 | if (process.env.CSS_TRANSFORMER_WASM) {
+> 17 |   module.exports = require(`../pkg`);
+     |                    ^^^^^^^^^^^^^^^^^
+  18 | } else {
+  19 |   try {
+  20 |     module.exports = require(`lightningcss-${parts.join('-')}`);
+
+
+
+Import trace:
+  postcss:
+    ./node_modules/lightningcss/node/index.js
+    ./node_modules/lightningcss/node/index.mjs
+    ./node_modules/@tailwindcss/node/dist/index.mjs
+    ./node_modules/@tailwindcss/postcss/dist/index.mjs
+    ./postcss.config.mjs
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:04.640] Browser ERROR   uncaughtError: Error: ./src/app/globals.css
+Error evaluating Node.js code
+Error: Cannot find module '../pkg'
+    [at <anonymous> (turbopack:///[project]/node_modules/lightningcss/node/index.js:17:17)]
+    [at module evaluation (turbopack:///[project]/node_modules/lightningcss/node/index.js:17:17)]
+    [at instantiateModule (turbopack:///[turbopack]/nodejs/runtime.ts:228:5)]
+    [at getOrInstantiateModuleFromParent (turbopack:///[turbopack]/nodejs/runtime.ts:261:10)]
+    [at Context.esmImport (turbopack:///[turbopack]/shared/runtime-utils.ts:347:18)]
+    [at module evaluation (turbopack:///[project]/node_modules/lightningcss/node/index.mjs:1:1)]
+    [at instantiateModule (turbopack:///[turbopack]/nodejs/runtime.ts:228:5)]
+    [at getOrInstantiateModuleFromParent (turbopack:///[turbopack]/nodejs/runtime.ts:261:10)]
+    [at Context.esmImport (turbopack:///[turbopack]/shared/runtime-utils.ts:347:18)]
+    [at module evaluation (turbopack:///[project]/node_modules/@tailwindcss/node/dist/index.mjs:15:181)]
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+
+
+[00:00:04.640] Browser ERROR   uncaughtError: SyntaxError: Unexpected token ':'
+[00:00:04.814] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:00:04.814] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:00:04.814] Browser ERROR   ./src/app/globals.css
+Error evaluating Node.js code
+Error: Cannot find module '../pkg'
+    [at <anonymous> (turbopack:///[project]/node_modules/lightningcss/node/index.js:17:17)]
+    [at module evaluation (turbopack:///[project]/node_modules/lightningcss/node/index.js:17:17)]
+    [at instantiateModule (turbopack:///[turbopack]/nodejs/runtime.ts:228:5)]
+    [at getOrInstantiateModuleFromParent (turbopack:///[turbopack]/nodejs/runtime.ts:261:10)]
+    [at Context.esmImport (turbopack:///[turbopack]/shared/runtime-utils.ts:347:18)]
+    [at module evaluation (turbopack:///[project]/node_modules/lightningcss/node/index.mjs:1:1)]
+    [at instantiateModule (turbopack:///[turbopack]/nodejs/runtime.ts:228:5)]
+    [at getOrInstantiateModuleFromParent (turbopack:///[turbopack]/nodejs/runtime.ts:261:10)]
+    [at Context.esmImport (turbopack:///[turbopack]/shared/runtime-utils.ts:347:18)]
+    [at module evaluation (turbopack:///[project]/node_modules/@tailwindcss/node/dist/index.mjs:15:181)]
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+[00:00:04.814] Browser ERROR   ./node_modules/lightningcss/node/index.js:22:22
+Module not found: Can't resolve '../lightningcss.' <dynamic> '.node'
+  20 |     module.exports = require(`lightningcss-${parts.join('-')}`);
+  21 |   } catch (err) {
+> 22 |     module.exports = require(`../lightningcss.${parts.join('-')}.node`);
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  23 |   }
+  24 | }
+  25 |
+
+Import trace:
+  postcss:
+    ./node_modules/lightningcss/node/index.js
+    ./node_modules/lightningcss/node/index.mjs
+    ./node_modules/@tailwindcss/node/dist/index.mjs
+    ./node_modules/@tailwindcss/postcss/dist/index.mjs
+    ./postcss.config.mjs
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:04.814] Browser ERROR   ./node_modules/lightningcss/node/index.js:17:20
+Module not found: Can't resolve '../pkg'
+  15 |
+  16 | if (process.env.CSS_TRANSFORMER_WASM) {
+> 17 |   module.exports = require(`../pkg`);
+     |                    ^^^^^^^^^^^^^^^^^
+  18 | } else {
+  19 |   try {
+  20 |     module.exports = require(`lightningcss-${parts.join('-')}`);
+
+Import trace:
+  postcss:
+    ./node_modules/lightningcss/node/index.js
+    ./node_modules/lightningcss/node/index.mjs
+    ./node_modules/@tailwindcss/node/dist/index.mjs
+    ./node_modules/@tailwindcss/postcss/dist/index.mjs
+    ./postcss.config.mjs
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:05.027] Browser ERROR   ./src/app/globals.css
+Error evaluating Node.js code
+Error: Cannot find module '../pkg'
+    [at <anonymous> (turbopack:///[project]/node_modules/lightningcss/node/index.js:17:17)]
+    [at module evaluation (turbopack:///[project]/node_modules/lightningcss/node/index.js:17:17)]
+    [at instantiateModule (turbopack:///[turbopack]/nodejs/runtime.ts:228:5)]
+    [at getOrInstantiateModuleFromParent (turbopack:///[turbopack]/nodejs/runtime.ts:261:10)]
+    [at Context.esmImport (turbopack:///[turbopack]/shared/runtime-utils.ts:347:18)]
+    [at module evaluation (turbopack:///[project]/node_modules/lightningcss/node/index.mjs:1:1)]
+    [at instantiateModule (turbopack:///[turbopack]/nodejs/runtime.ts:228:5)]
+    [at getOrInstantiateModuleFromParent (turbopack:///[turbopack]/nodejs/runtime.ts:261:10)]
+    [at Context.esmImport (turbopack:///[turbopack]/shared/runtime-utils.ts:347:18)]
+    [at module evaluation (turbopack:///[project]/node_modules/@tailwindcss/node/dist/index.mjs:15:181)]
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+[00:00:05.027] Browser ERROR   ./node_modules/lightningcss/node/index.js:22:22
+Module not found: Can't resolve '../lightningcss.' <dynamic> '.node'
+  20 |     module.exports = require(`lightningcss-${parts.join('-')}`);
+  21 |   } catch (err) {
+> 22 |     module.exports = require(`../lightningcss.${parts.join('-')}.node`);
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  23 |   }
+  24 | }
+  25 |
+
+Import trace:
+  postcss:
+    ./node_modules/lightningcss/node/index.js
+    ./node_modules/lightningcss/node/index.mjs
+    ./node_modules/@tailwindcss/node/dist/index.mjs
+    ./node_modules/@tailwindcss/postcss/dist/index.mjs
+    ./postcss.config.mjs
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:05.027] Browser ERROR   ./node_modules/lightningcss/node/index.js:17:20
+Module not found: Can't resolve '../pkg'
+  15 |
+  16 | if (process.env.CSS_TRANSFORMER_WASM) {
+> 17 |   module.exports = require(`../pkg`);
+     |                    ^^^^^^^^^^^^^^^^^
+  18 | } else {
+  19 |   try {
+  20 |     module.exports = require(`lightningcss-${parts.join('-')}`);
+
+Import trace:
+  postcss:
+    ./node_modules/lightningcss/node/index.js
+    ./node_modules/lightningcss/node/index.mjs
+    ./node_modules/@tailwindcss/node/dist/index.mjs
+    ./node_modules/@tailwindcss/postcss/dist/index.mjs
+    ./postcss.config.mjs
+
+https://nextjs.org/docs/messages/module-not-found
