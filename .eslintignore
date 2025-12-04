@@ -1,0 +1,8 @@
+backs/
+src/dataconnect-generated/
+functions/
+node_modules/
+.next/
+out/
+dist/
+scripts/
