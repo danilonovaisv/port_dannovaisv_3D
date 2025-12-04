@@ -4,7 +4,7 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
-import TorusDan from './TorusDan'
+import TorusDan from './Torus_dan'
 
 type PointerState = {
   x: number
