@@ -1,82 +1,181 @@
-'use client';
+"use client";
 
-import React, { useRef, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-
-const MANIFESTO_VIDEO_URL =
-    'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/project-videos/VIDEO-APRESENTACAO-PORTFOLIO.mp4';
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Play, Volume2, VolumeX, AlertCircle } from "lucide-react";
+import { HOMEPAGE_CONTENT } from "../../config/homepageContent";
 
 const Manifesto: React.FC = () => {
-    const videoRef = useRef<HTMLVideoElement | null>(null);
-    const [isPlaying, setIsPlaying] = useState(true);
-    const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
-    const togglePlay = () => {
-        const video = videoRef.current;
-        if (!video) return;
-        if (video.paused) {
-            void video.play();
-            setIsPlaying(true);
-        } else {
-            video.pause();
-            setIsPlaying(false);
-        }
+  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
+  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 80%", "end 20%"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.96, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+
+  const videoUrl = HOMEPAGE_CONTENT.about.videoUrl;
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    const tryPlay = async () => {
+      try {
+        await v.play();
+        setIsPlaying(true);
+      } catch {
+        setIsPlaying(false);
+      }
     };
 
-    return (
-        <section
-            id="manifesto"
-            className="relative bg-black text-white"
-            aria-label="Manifesto em vídeo de Danilo Novais"
-        >
-            <div className="mx-auto max-w-6xl px-4 py-16 md:px-6">
-                <motion.div
-                    className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/80 shadow-2xl"
-                    initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 40, scale: prefersReducedMotion ? 1 : 0.96 }}
-                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                    viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 0.7, ease: [0.22, 0.61, 0.36, 1] as const }}
-                >
-                    <video
-                        ref={videoRef}
-                        src={MANIFESTO_VIDEO_URL}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="h-full w-full object-cover"
-                    />
-                    {/* Gradiente inferior */}
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    {/* Badge de play */}
-                    <div className="absolute inset-0 flex items-end justify-between p-6">
-                        <div className="space-y-2 max-w-xs">
-                            <p className="text-xs font-medium uppercase tracking-[0.22em] text-white/70">
-                                manifesto
-                            </p>
-                            <p className="text-sm text-white/85">
-                                Um olhar por dentro do processo, da intenção e da estratégia que guiam cada
-                                projeto.
-                            </p>
-                        </div>
-                        <motion.button
-                            type="button"
-                            onClick={togglePlay}
-                            whileHover={{ scale: prefersReducedMotion ? 1 : 1.06, y: prefersReducedMotion ? 0 : -2 }}
-                            whileTap={{ scale: prefersReducedMotion ? 1 : 0.96 }}
-                            className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-black shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black/80"
-                            aria-label={isPlaying ? 'Pausar manifesto em vídeo' : 'Reproduzir manifesto em vídeo'}
-                        >
-                            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-black text-[9px] font-bold text-white">
-                                {isPlaying ? '❚❚' : '▶'}
-                            </span>
-                            {isPlaying ? 'Pausar manifesto' : 'Assistir manifesto'}
-                        </motion.button>
-                    </div>
-                </motion.div>
-            </div>
-        </section>
-    );
+    tryPlay();
+  }, [videoUrl]);
+
+  const handleVideoReady = () => {
+    setStatus("ready");
+  };
+
+  const handleVideoError = () => {
+    setStatus("error");
+  };
+
+  const toggleMute = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setIsMuted(v.muted);
+  };
+
+  const togglePlay = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.play();
+      setIsPlaying(true);
+    } else {
+      v.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  return (
+    <section
+      id="about"
+      ref={sectionRef}
+      className="relative mx-auto w-full max-w-6xl px-4 pb-24 pt-8 sm:px-6 lg:px-8"
+    >
+      <div className="mb-4 flex items-center justify-between">
+        <div className="space-y-1">
+          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-zinc-500">
+            vídeos & motions
+          </p>
+          <h2 className="text-sm font-medium text-zinc-800 sm:text-base">
+            Manifesto em movimento
+          </h2>
+        </div>
+
+        <span className="hidden rounded-full bg-zinc-900 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-100 sm:inline-flex">
+          brand awareness
+        </span>
+      </div>
+
+      <motion.div
+        style={{ y, scale, opacity }}
+        initial={{ opacity: 0, y: 40, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        className="relative aspect-[16/7] overflow-hidden rounded-[32px] bg-slate-900 shadow-[0_40px_160px_rgba(15,23,42,0.55)]"
+      >
+        <video
+          ref={videoRef}
+          src={videoUrl}
+          autoPlay
+          loop
+          muted={isMuted}
+          playsInline
+          className="h-full w-full object-cover"
+          onCanPlay={handleVideoReady}
+          onLoadedData={handleVideoReady}
+          onError={handleVideoError}
+        />
+
+        {status === "loading" && (
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+            <div className="absolute inset-0 animate-pulse bg-[radial-gradient(circle_at_20%_0%,rgba(96,165,250,0.4),transparent_45%),radial-gradient(circle_at_80%_20%,rgba(236,72,153,0.35),transparent_45%),radial-gradient(circle_at_50%_100%,rgba(56,189,248,0.35),transparent_50%)]" />
+          </div>
+        )}
+
+        {status === "error" && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-slate-950/80 px-6 text-center text-zinc-200">
+            <AlertCircle className="h-7 w-7 text-red-400" />
+            <p className="text-sm font-medium">
+              Não foi possível carregar o manifesto.
+            </p>
+            <p className="text-xs text-zinc-400">
+              Verifique a URL do vídeo na configuração da homepage.
+            </p>
+          </div>
+        )}
+
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
+        </div>
+
+        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between px-5 pb-4 sm:px-6 sm:pb-5">
+          <div className="space-y-1 text-left text-zinc-100">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-zinc-300">
+              manifesto
+            </p>
+            <p className="max-w-md text-xs sm:text-sm">
+              Estratégia, storytelling e movimento — condensados em um vídeo
+              que apresenta como você pensa design além da estética.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-end gap-2">
+            <button
+              type="button"
+              onClick={togglePlay}
+              className="group flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur transition hover:bg-white/25"
+            >
+              <Play
+                className={`h-4 w-4 transition-transform ${
+                  isPlaying ? "group-hover:scale-110" : ""
+                }`}
+              />
+            </button>
+
+            <button
+              type="button"
+              onClick={toggleMute}
+              className="flex items-center gap-1 rounded-full bg-black/40 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-zinc-100 backdrop-blur"
+            >
+              {isMuted ? (
+                <>
+                  <VolumeX className="h-3 w-3" />
+                  <span>som desligado</span>
+                </>
+              ) : (
+                <>
+                  <Volume2 className="h-3 w-3" />
+                  <span>som ligado</span>
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    </section>
+  );
 };
 
 export default Manifesto;
