@@ -1,10 +1,10 @@
-
 "use client";
 
-import { AnimatePresence, motion } from 'framer-motion';
+import React, { FC, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CATEGORIES } from '@/lib/constants';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { FC, useState } from 'react';
-import { CATEGORIES } from '../../lib/constants';
+import HeroGlassCanvas from '../three/HeroGlassCanvas';
 
 const PortfolioShowcaseSection: FC = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -26,6 +26,11 @@ const PortfolioShowcaseSection: FC = () => {
 
   return (
     <section className="relative w-full bg-[#f5f5f5] py-24 overflow-hidden min-h-screen flex flex-col justify-center">
+
+      {/* Elemento Visual Dinâmico (Globo/Abstração 3D) */}
+      <div className="absolute top-[-10%] right-[-10%] w-[50vh] h-[50vh] md:w-[600px] md:h-[600px] opacity-60 pointer-events-none z-0">
+        <HeroGlassCanvas />
+      </div>
 
       <div className="container mx-auto px-4 md:px-8 max-w-[90%] md:max-w-7xl relative z-10">
 

@@ -1,15 +1,14 @@
+import React from 'react';
+import Hero from '@/components/sections/Hero';
+import PortfolioShowcase from '@/components/sections/PortfolioShowcase';
+import FeaturedProjects from '@/components/sections/FeaturedProjects';
 import Clients from '@/components/sections/Clients';
 import Contact from '@/components/sections/Contact';
-import FeaturedProjects from '@/components/sections/FeaturedProjects';
-import Hero from '@/components/sections/Hero';
-import Manifesto from '@/components/sections/Manifesto';
-import PortfolioShowcase from '@/components/sections/PortfolioShowcase';
 
-export default function HomePage() {
+export default function Home() {
   return (
     <>
       <Hero />
-      <Manifesto />
       <PortfolioShowcase />
       <FeaturedProjects />
       <Clients />

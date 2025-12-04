@@ -1,13 +1,21 @@
-
 "use client";
 
-import { motion } from 'framer-motion';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import React, { useRef } from 'react';
-import { FEATURED_PROJECTS } from '../../lib/constants';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { FEATURED_PROJECTS } from '@/lib/constants';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import HeroGlassCanvas from '../three/HeroGlassCanvas';
 
 const FeaturedProjects: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Parallax suave para o globo 3D
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const yGlobo = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
     <section
@@ -111,6 +119,14 @@ const FeaturedProjects: React.FC = () => {
 
         </div>
       </div>
+
+      {/* Globo Iridescente 3D (Bottom Right) */}
+      <motion.div
+        style={{ y: yGlobo }}
+        className="absolute -bottom-20 -right-20 w-[300px] h-[300px] md:w-[600px] md:h-[600px] z-0 pointer-events-auto opacity-60 mix-blend-multiply"
+      >
+        <HeroGlassCanvas />
+      </motion.div>
 
     </section>
   );
