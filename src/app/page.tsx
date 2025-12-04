@@ -1,18 +1,26 @@
-import React from 'react';
-import Hero from '@/components/sections/Hero';
-import PortfolioShowcase from '@/components/sections/PortfolioShowcase';
-import FeaturedProjects from '@/components/sections/FeaturedProjects';
-import Clients from '@/components/sections/Clients';
-import Contact from '@/components/sections/Contact';
+import SiteHeader from '@/components/layout/SiteHeader';
+import HeroSection from '@/components/home/HeroSection';
+import ManifestoSection from '@/components/home/ManifestoSection';
+import PortfolioShowcaseSection from '@/components/home/PortfolioShowcaseSection';
+import FeaturedProjectsSection from '@/components/home/FeaturedProjectsSection';
+import ClientsSection from '@/components/home/ClientsSection';
+import ContactSection from '@/components/home/ContactSection';
+import SiteFooter from '@/components/layout/SiteFooter';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <>
-      <Hero />
-      <PortfolioShowcase />
-      <FeaturedProjects />
-      <Clients />
-      <Contact />
-    </>
+    <div className="min-h-screen bg-white text-[#111111] flex flex-col">
+      <SiteHeader />
+      {/* padding-top para compensar o header fixo / padding-bottom para o footer fixo */}
+      <main className="flex-1 pt-20 pb-28">
+        <HeroSection />
+        <ManifestoSection />
+        <PortfolioShowcaseSection />
+        <FeaturedProjectsSection />
+        <ClientsSection />
+        <ContactSection />
+      </main>
+      <SiteFooter />
+    </div>
   );
 }
