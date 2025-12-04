@@ -1,4 +1,5 @@
-[00:00:00.674] Server  LOG      ✓ Ready in 453ms
-[00:00:04.446] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
-[00:00:04.446] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
-[00:00:04.446] Browser WARN    value.onChange(callback) is deprecated. Switch to value.on("change", callback).
+[00:00:02.038] Server  LOG      ✓ Ready in 1872ms
+[00:00:04.222] Browser ERROR   uncaughtError: SyntaxError: Unexpected token ':'
+[00:00:04.390] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:00:04.390] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:00:04.390] Browser WARN    value.onChange(callback) is deprecated. Switch to value.on("change", callback).
