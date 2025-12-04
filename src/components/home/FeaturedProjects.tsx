@@ -1,209 +1,135 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
-
-type FeaturedProject = {
-    slug: string;
-    title: string;
-    category: string;
-    client: string;
-    year: string;
-    imageUrl: string;
-};
-
-const FEATURED_PROJECTS: FeaturedProject[] = [
-    {
-        slug: 'magic-radio-branding',
-        title: 'Magic — devolvendo a magia ao rádio',
-        category: 'branding & campanha',
-        client: 'Magic',
-        year: '2023',
-        imageUrl:
-            'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/project-images/Brand-Identity%20copy.webp',
-    },
-    {
-        slug: 'branding-project-01',
-        title: 'Uma marca ousada e consistente',
-        category: 'branding',
-        client: 'Cliente confidencial',
-        year: '2022',
-        imageUrl:
-            'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/project-images/Branding-Project.webp',
-    },
-    {
-        slug: 'key-visual-campaign',
-        title: 'Key visual para campanha sazonal',
-        category: 'campanha',
-        client: 'Cliente confidencial',
-        year: '2021',
-        imageUrl:
-            'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/project-images/Key-Visual.webp',
-    },
-    {
-        slug: 'webdesigner-motion',
-        title: 'Experiência web em movimento',
-        category: 'web & motion',
-        client: 'Cliente confidencial',
-        year: '2023',
-        imageUrl:
-            'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/project-images/webdesigner-2%202.gif',
-    },
-];
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { FEATURED_PROJECTS } from '../../lib/constants';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import HeroGlassCanvas from '../three/HeroGlassCanvas';
 
 const FeaturedProjects: React.FC = () => {
-    const prefersReducedMotion = useReducedMotion();
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Parallax suave para o globo 3D
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const yGlobo = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
-    return (
-        <section
-            aria-labelledby="featured-projects-heading"
-            className="bg-[#F4F5F7]"
-        >
-            <div className="mx-auto max-w-6xl px-4 py-12 md:px-6">
-                <motion.div
-                    className="mb-8 flex items-center justify-between gap-4"
-                    initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as const }}
-                >
-                    <h2
-                        id="featured-projects-heading"
-                        className="text-2xl font-bold text-[#0057FF]"
-                    >
-                        Projetos em Destaque
-                    </h2>
-                    <Link href="/portfolio" className="hidden text-xs font-semibold uppercase tracking-[0.16em] text-[#0057FF] md:inline-flex">
-                        view projects →
-                    </Link>
-                </motion.div>
+  return (
+    <section 
+      id="featured-projects" 
+      ref={containerRef}
+      className="relative py-24 bg-[#F4F5F7] overflow-hidden"
+    >
+      <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
+        
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
+          
+          {FEATURED_PROJECTS.map((project, index) => {
+             const isHero = project.isHero;
+             
+             // Define o aspect ratio: Hero é wide, cards normais são portrait
+             const aspectRatioClass = isHero 
+                ? 'aspect-video md:aspect-[2.2/1]' 
+                : 'aspect-[4/5]';
 
-                <motion.div
-                    className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                    variants={{
-                        hidden: {},
-                        visible: {
-                            transition: { staggerChildren: prefersReducedMotion ? 0 : 0.08 },
-                        },
-                    }}
-                >
-                    {FEATURED_PROJECTS.map((project) => (
-                        <motion.article
-                            key={project.slug}
-                            variants={{
-                                hidden: {
-                                    opacity: prefersReducedMotion ? 1 : 0,
-                                    y: prefersReducedMotion ? 0 : 24,
-                                    scale: prefersReducedMotion ? 1 : 0.96,
-                                },
-                                visible: { opacity: 1, y: 0, scale: 1 },
-                            }}
-                            transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as const }}
-                        >
-                            <Link
-                                href={`/portfolio/${project.slug}`}
-                                className="group flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5 transition-shadow hover:shadow-xl hover:shadow-[#0057FF]/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0057FF]"
-                                aria-label={`Ver projeto ${project.title}`}
-                            >
-                                <div className="relative aspect-[4/3] overflow-hidden">
-                                    <motion.img
-                                        src={project.imageUrl}
-                                        alt={`Imagem do projeto ${project.title}`}
-                                        className="h-full w-full object-cover"
-                                        whileHover={
-                                            prefersReducedMotion
-                                                ? undefined
-                                                : { scale: 1.03, y: -4 }
-                                        }
-                                        transition={{ duration: 0.3, ease: 'easeOut' }}
-                                    />
-                                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                                    <motion.div
-                                        className="pointer-events-none absolute inset-x-4 bottom-4 opacity-0 transition-opacity group-hover:opacity-100"
-                                        initial={false}
-                                    >
-                                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/80">
-                                            {project.category}
-                                        </p>
-                                        <p className="text-sm font-semibold text-white">
-                                            {project.title}
-                                        </p>
-                                    </motion.div>
-                                </div>
-                                <div className="flex flex-1 flex-col justify-between px-4 py-4">
-                                    <div>
-                                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
-                                            {project.client}
-                                        </p>
-                                        <p className="mt-1 text-sm font-medium text-[#111111]">
-                                            {project.title}
-                                        </p>
-                                    </div>
-                                    <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
-                                        <span>{project.category}</span>
-                                        <span>{project.year}</span>
-                                    </div>
-                                </div>
-                            </Link>
-                        </motion.article>
-                    ))}
-
-                    {/* Card final CTA */}
-                    <motion.article
-                        variants={{
-                            hidden: {
-                                opacity: prefersReducedMotion ? 1 : 0,
-                                y: prefersReducedMotion ? 0 : 24,
-                                scale: prefersReducedMotion ? 1 : 0.96,
-                            },
-                            visible: { opacity: 1, y: 0, scale: 1 },
-                        }}
-                        transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as const }}
-                        className="flex h-full items-center justify-center rounded-3xl bg-[#0057FF] p-6 text-white shadow-md md:col-span-2 lg:col-span-1"
-                    >
-                        <div className="space-y-4 text-center">
-                            <p className="text-lg font-semibold">Like what you see?</p>
-                            <Link href="/portfolio">
-                                <motion.button
-                                    whileHover={{ y: prefersReducedMotion ? 0 : -1, scale: prefersReducedMotion ? 1 : 1.02 }}
-                                    whileTap={{ scale: prefersReducedMotion ? 1 : 0.97 }}
-                                    className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#0057FF] shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0057FF]"
-                                >
-                                    view projects
-                                    <motion.span
-                                        className="inline-block text-sm"
-                                        animate={
-                                            prefersReducedMotion
-                                                ? { x: 0 }
-                                                : { x: [0, 4, 0] }
-                                        }
-                                        transition={
-                                            prefersReducedMotion
-                                                ? undefined
-                                                : { duration: 1.4, repeat: Infinity, ease: 'easeInOut' }
-                                        }
-                                    >
-                                        →
-                                    </motion.span>
-                                </motion.button>
-                            </Link>
-                        </div>
-                    </motion.article>
-                </motion.div>
-
-                {/* CTA mobile fallback */}
-                <div className="mt-6 text-center md:hidden">
-                    <Link href="/portfolio" className="text-xs font-semibold uppercase tracking-[0.16em] text-[#0057FF]">
-                        view projects →
-                    </Link>
+             return (
+              <motion.a
+                key={project.slug}
+                href={`/portfolio/${project.slug}`}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98], delay: index * 0.1 }}
+                className={`group relative flex flex-col w-full ${isHero ? 'md:col-span-2' : ''}`}
+              >
+                {/* Container da Imagem */}
+                <div className={`relative overflow-hidden rounded-2xl bg-gray-200 w-full ${aspectRatioClass} mb-6 shadow-sm`}>
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 z-10" />
+                    
+                    <img 
+                        src={project.imageUrl} 
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    
+                    {/* Badges de Categoria */}
+                    <div className="absolute top-6 right-6 z-20 flex flex-col gap-2 items-end">
+                        <span className="bg-white/95 backdrop-blur-md text-[#0057FF] text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+                            {project.category}
+                        </span>
+                        {project.displayCategory !== project.category && (
+                           <span className="bg-[#111111]/80 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+                             {project.displayCategory.split('&')[1] || 'Design'}
+                           </span>
+                        )}
+                    </div>
                 </div>
-            </div>
-        </section>
-    );
+
+                {/* Informações do Projeto */}
+                <div className="flex justify-between items-end px-2">
+                    <div className="flex flex-col gap-1 pr-4">
+                        <h3 className="text-2xl md:text-3xl font-bold text-[#111111] leading-tight group-hover:text-[#0057FF] transition-colors duration-300">
+                            {project.title}
+                        </h3>
+                        <p className="text-gray-500 text-sm uppercase tracking-widest font-bold">
+                            {project.client}
+                        </p>
+                    </div>
+
+                    {/* Botão de Seta */}
+                    <div className="mb-1 shrink-0">
+                        <div className="w-12 h-12 rounded-full bg-[#0057FF] text-white flex items-center justify-center transform translate-x-0 group-hover:translate-x-2 transition-all duration-300 shadow-lg group-hover:scale-110">
+                            <ArrowRight size={20} />
+                        </div>
+                    </div>
+                </div>
+              </motion.a>
+             );
+          })}
+
+          {/* Bloco "Like what you see?" - Ocupa o último espaço do grid */}
+          <motion.div 
+             initial={{ opacity: 0, x: 20 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.8, delay: 0.2 }}
+             className="flex flex-col justify-center items-center text-center min-h-[400px]"
+          >
+              <h3 className="text-4xl md:text-5xl font-light text-[#111111] mb-8 leading-tight">
+                  Like what<br/>you see?
+              </h3>
+              
+              <motion.a 
+                href="/portfolio"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative inline-flex items-center gap-4 rounded-full bg-[#0057FF] px-10 py-5 text-white shadow-xl hover:shadow-[#0057FF]/40 transition-all duration-300"
+              >
+                <span className="text-lg font-bold tracking-wide">view projects</span>
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 group-hover:bg-white text-[#0057FF] transition-colors duration-300">
+                   <ArrowUpRight className="w-4 h-4 text-white group-hover:text-[#0057FF]" />
+                </span>
+              </motion.a>
+              
+          </motion.div>
+
+        </div>
+      </div>
+      
+      {/* Globo Iridescente 3D (Bottom Right) */}
+      <motion.div 
+        style={{ y: yGlobo }}
+        className="absolute -bottom-20 -right-20 w-[300px] h-[300px] md:w-[600px] md:h-[600px] z-0 pointer-events-auto opacity-60 mix-blend-multiply"
+      >
+        <HeroGlassCanvas />
+      </motion.div>
+
+    </section>
+  );
 };
 
 export default FeaturedProjects;

@@ -1,201 +1,131 @@
-'use client';
+"use client";
 
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { CONTACT_INFO, SOCIALS } from '../../lib/constants';
+import { ArrowRight } from 'lucide-react';
 
 const Contact: React.FC = () => {
-    const prefersReducedMotion = useReducedMotion();
+  return (
+    <section id="contact" className="py-24 bg-[#F4F5F7]">
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0057FF] mb-4 lowercase">contato</h2>
+            <p className="text-xl text-dark mb-12">Tem uma pergunta ou quer trabalhar junto?</p>
 
-    return (
-        <section
-            id="contact"
-            className="bg-white"
-            aria-labelledby="contact-heading"
-        >
-            <div className="mx-auto max-w-6xl px-4 py-12 md:px-6">
-                <motion.div
-                    className="mb-8 space-y-2 text-left"
-                    initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as const }}
-                >
-                    <h2
-                        id="contact-heading"
-                        className="text-2xl font-bold text-[#0057FF]"
+            <div className="space-y-6 mb-12">
+                {CONTACT_INFO.map((item, idx) => (
+                    <a 
+                        key={idx} 
+                        href={item.href}
+                        className="flex items-center gap-4 text-dark hover:text-primary transition-colors text-lg font-medium group"
                     >
-                        contato
-                    </h2>
-                    <p className="text-base text-[#111111]">
-                        Tem uma pergunta ou quer trabalhar junto?
-                    </p>
-                </motion.div>
-
-                <motion.div
-                    className="grid gap-10 md:grid-cols-2"
-                    initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as const }}
-                >
-                    {/* Coluna esquerda: infos e redes */}
-                    <div className="space-y-6 text-sm text-[#111111]">
-                        <div>
-                            <p className="font-semibold">Contato direto</p>
-                            <div className="mt-2 space-y-1">
-                                <a
-                                    href="tel:+5511983966838"
-                                    className="block text-sm text-[#0057FF] hover:underline"
-                                >
-                                    +55 11 98396-6838
-                                </a>
-                                <a
-                                    href="mailto:dannovaisv@gmail.com"
-                                    className="block text-sm text-[#0057FF] hover:underline"
-                                >
-                                    dannovaisv@gmail.com
-                                </a>
-                                <a
-                                    href="mailto:danilo@portfoliodanilo.com"
-                                    className="block text-sm text-[#0057FF] hover:underline"
-                                >
-                                    danilo@portfoliodanilo.com
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <p className="font-semibold">Presença digital</p>
-                            <div className="mt-2 space-y-1">
-                                <a
-                                    href="https://portfoliodanilo.com"
-                                    className="block text-sm text-[#0057FF] hover:underline"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    portfoliodanilo.com
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <p className="font-semibold">Redes sociais</p>
-                            <div className="mt-3 flex flex-wrap gap-3 text-sm">
-                                <a
-                                    href="https://instagram.com/danilo_novais"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="text-[#0057FF] hover:underline"
-                                >
-                                    Instagram
-                                </a>
-                                <a
-                                    href="https://facebook.com/danilonovaisvilela"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="text-[#0057FF] hover:underline"
-                                >
-                                    Facebook
-                                </a>
-                                <a
-                                    href="https://linkedin.com/in/danilonovais"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="text-[#0057FF] hover:underline"
-                                >
-                                    LinkedIn
-                                </a>
-                                <a
-                                    href="https://twitter.com/danilo_novais"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="text-[#0057FF] hover:underline"
-                                >
-                                    Twitter
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Coluna direita: formulário */}
-                    <motion.form
-                        action="https://formsubmit.co/danilo@portfoliodanilo.com"
-                        method="POST"
-                        className="space-y-4 text-sm"
-                        initial={false}
-                    >
-                        <div className="space-y-1">
-                            <label htmlFor="name" className="block font-medium text-[#111111]">
-                                Nome
-                            </label>
-                            <input
-                                id="name"
-                                name="name"
-                                type="text"
-                                required
-                                maxLength={100}
-                                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-[#111111] shadow-sm focus:border-[#0057FF] focus:outline-none focus:ring-2 focus:ring-[#0057FF] focus:ring-offset-2 focus:ring-offset-white"
-                            />
-                        </div>
-
-                        <div className="space-y-1">
-                            <label htmlFor="email" className="block font-medium text-[#111111]">
-                                Email
-                            </label>
-                            <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                required
-                                maxLength={100}
-                                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-[#111111] shadow-sm focus:border-[#0057FF] focus:outline-none focus:ring-2 focus:ring-[#0057FF] focus:ring-offset-2 focus:ring-offset-white"
-                            />
-                        </div>
-
-                        <div className="space-y-1">
-                            <label htmlFor="subject" className="block font-medium text-[#111111]">
-                                Assunto
-                            </label>
-                            <input
-                                id="subject"
-                                name="subject"
-                                type="text"
-                                maxLength={100}
-                                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-[#111111] shadow-sm focus:border-[#0057FF] focus:outline-none focus:ring-2 focus:ring-[#0057FF] focus:ring-offset-2 focus:ring-offset-white"
-                            />
-                        </div>
-
-                        <div className="space-y-1">
-                            <label htmlFor="message" className="block font-medium text-[#111111]">
-                                Mensagem
-                            </label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                required
-                                maxLength={1000}
-                                rows={5}
-                                className="w-full resize-none rounded-md border border-gray-300 px-3 py-2 text-sm text-[#111111] shadow-sm focus:border-[#0057FF] focus:outline-none focus:ring-2 focus:ring-[#0057FF] focus:ring-offset-2 focus:ring-offset-white"
-                            />
-                        </div>
-
-                        {/* Proteções básicas do formsubmit (opcionais) */}
-                        <input type="hidden" name="_captcha" value="false" />
-                        <input type="hidden" name="_template" value="table" />
-
-                        <motion.button
-                            type="submit"
-                            whileHover={{ y: prefersReducedMotion ? 0 : -1, scale: prefersReducedMotion ? 1 : 1.02 }}
-                            whileTap={{ scale: prefersReducedMotion ? 1 : 0.97 }}
-                            className="mt-2 inline-flex items-center justify-center rounded-full bg-[#0057FF] px-6 py-2.5 text-sm font-semibold text-white shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0057FF] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                        >
-                            Enviar Mensagem
-                        </motion.button>
-                    </motion.form>
-                </motion.div>
+                        <span className="p-3 bg-white rounded-full text-primary shadow-sm group-hover:scale-110 transition-transform">
+                            {item.icon}
+                        </span>
+                        {item.label}
+                    </a>
+                ))}
             </div>
-        </section>
-    );
+
+            <div className="flex gap-4">
+                {SOCIALS.map((social) => (
+                    <a
+                        key={social.platform}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-white rounded-full text-dark hover:text-primary hover:scale-110 hover:opacity-80 transition-all shadow-sm duration-300"
+                        aria-label={social.platform}
+                    >
+                        {social.icon}
+                    </a>
+                ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-gray-100"
+          >
+            <form 
+                action="https://formsubmit.co/danilo@portfoliodanilo.com" 
+                method="POST"
+                className="space-y-6"
+            >
+                <input type="text" name="_honey" style={{display: 'none'}} />
+                <input type="hidden" name="_captcha" value="false" />
+
+                <div>
+                    <label htmlFor="name" className="block text-sm font-semibold text-gray-600 mb-2">Seu nome</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        required 
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                        placeholder="João da Silva"
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="email" className="block text-sm font-semibold text-gray-600 mb-2">Seu email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                        placeholder="joao@empresa.com"
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="phone" className="block text-sm font-semibold text-gray-600 mb-2">Telefone</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        required 
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                        placeholder="(11) 99999-9999"
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="message" className="block text-sm font-semibold text-gray-600 mb-2">Sua mensagem</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        required 
+                        rows={4}
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
+                        placeholder="Conte-me sobre seu projeto..."
+                    />
+                </div>
+
+                <button 
+                    type="submit"
+                    className="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 group"
+                >
+                    Enviar Mensagem
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+            </form>
+          </motion.div>
+
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Contact;

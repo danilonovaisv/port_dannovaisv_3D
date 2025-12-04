@@ -1,35 +1,45 @@
-"use client";
-
-import React from "react";
-import { HOMEPAGE_CONTENT } from "../../config/homepageContent";
+import React from 'react';
+import { NAV_LINKS, SOCIALS } from '../../lib/constants';
 
 const Footer: React.FC = () => {
-  const { footer } = HOMEPAGE_CONTENT;
-
-  const handleLinkClick = (href: string) => (e: React.MouseEvent) => {
-    if (!href.startsWith("#")) return;
-    e.preventDefault();
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <footer className="border-t border-zinc-200/60 bg-[#F4F5F7] py-6">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 text-[11px] text-zinc-500 sm:flex-row sm:px-6 lg:px-8">
-        <span>{footer.copyright}</span>
+    <footer className="bg-primary text-white py-12 border-t border-white/10">
+      <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
+        
+        <div className="text-center md:text-left text-sm opacity-80">
+          <p>© {new Date().getFullYear()} Danilo Novais Vilela. Todos os direitos reservados.</p>
+        </div>
 
-        <nav className="flex flex-wrap items-center gap-4">
-          {footer.links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={handleLinkClick(link.href)}
-              className="uppercase tracking-[0.25em] transition hover:text-[#0057FF]"
-            >
-              {link.label}
-            </a>
-          ))}
+        <nav>
+          <ul className="flex flex-wrap justify-center gap-6 md:gap-8">
+            {NAV_LINKS.map((link) => (
+              <li key={link.label}>
+                <a 
+                  href={link.href}
+                  className="text-sm font-medium hover:text-white/70 transition-colors lowercase"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </nav>
+
+        <div className="flex gap-4">
+            {SOCIALS.map((social) => (
+                <a
+                    key={social.platform}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-white/70 transition-colors"
+                    aria-label={social.platform}
+                >
+                    {social.icon}
+                </a>
+            ))}
+        </div>
+
       </div>
     </footer>
   );

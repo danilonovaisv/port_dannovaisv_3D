@@ -1,83 +1,47 @@
-'use client';
+"use client";
 
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-
-const CLIENT_LOGOS: string[] = [
-    'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/client-logos/client1.svg',
-    'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/client-logos/client2.svg',
-    'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/client-logos/client3.svg',
-    'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/client-logos/client4.svg',
-    'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/client-logos/client5.svg',
-    'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/client-logos/client6.svg',
-    'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/client-logos/client7.svg',
-    'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/client-logos/client8.svg',
-    'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/client-logos/client9.svg',
-    'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/client-logos/client10.svg',
-    'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/client-logos/client11.svg',
-    'https://aymuvxysygrwoicsjgxj.supabase.co/storage/v1/object/public/client-logos/client12.svg',
-];
+import { motion } from 'framer-motion';
+import { CLIENT_LOGOS } from '../../lib/constants';
 
 const Clients: React.FC = () => {
-    const prefersReducedMotion = useReducedMotion();
-
-    return (
-        <section
-            id="clients"
-            className="bg-[#0057FF] text-white"
-            aria-labelledby="clients-heading"
+  return (
+    <section id="clients" className="py-20 bg-[#0057FF] text-white">
+      <div className="container mx-auto px-6 md:px-12 text-center">
+        <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold mb-16"
         >
-            <div className="mx-auto max-w-6xl px-4 py-12 md:px-6">
-                <motion.h2
-                    id="clients-heading"
-                    className="mb-8 text-center text-xl font-bold md:text-2xl"
-                    initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as const }}
-                >
-                    marcas com as quais já trabalhei
-                </motion.h2>
+            marcas com as quais já trabalhei.
+        </motion.h2>
 
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-12 items-center justify-items-center">
+            {CLIENT_LOGOS.map((logo, index) => (
                 <motion.div
-                    className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    variants={{
-                        hidden: {},
-                        visible: {
-                            transition: { staggerChildren: prefersReducedMotion ? 0 : 0.03 },
-                        },
-                    }}
+                    key={index}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05 }}
+                    className="w-full max-w-[140px] opacity-70 hover:opacity-100 transition-opacity duration-300"
                 >
-                    {CLIENT_LOGOS.map((logo, index) => (
-                        <motion.div
-                            key={logo}
-                            className="flex items-center justify-center rounded-2xl bg-white/5 p-4"
-                            variants={{
-                                hidden: {
-                                    opacity: prefersReducedMotion ? 1 : 0,
-                                    y: prefersReducedMotion ? 0 : 12,
-                                    scale: prefersReducedMotion ? 1 : 0.9,
-                                },
-                                visible: { opacity: 1, y: 0, scale: 1 },
-                            }}
-                            transition={{ duration: 0.45, delay: index * 0.02 }}
-                        >
-                            <motion.img
-                                src={logo}
-                                alt={`Logo de cliente ${index + 1}`}
-                                className="max-h-10 w-auto filter brightness-0 invert"
-                                whileHover={prefersReducedMotion ? undefined : { scale: 1.04 }}
-                                transition={{ duration: 0.2 }}
-                            />
-                        </motion.div>
-                    ))}
+                    <img 
+                        src={logo} 
+                        alt={`Client ${index + 1}`} 
+                        className="w-full h-auto brightness-0 invert" 
+                        onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.parentElement!.innerHTML = `<div class="text-white font-bold text-xl opacity-50">CLIENT ${index+1}</div>`;
+                        }}
+                    />
                 </motion.div>
-            </div>
-        </section>
-    );
+            ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Clients;

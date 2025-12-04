@@ -1,5 +1,8 @@
-[00:00:00.840] Server  LOG      ✓ Ready in 568ms
-[00:00:04.152] Browser ERROR   uncaughtError: SyntaxError: Unexpected token ':'
-[00:00:04.319] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
-[00:00:04.319] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
-[00:00:04.319] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:00:00.806] Server  LOG      ✓ Ready in 518ms
+[00:00:03.559] Browser ERROR   uncaughtError: SyntaxError: Unexpected token ':'
+[00:00:03.740] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:00:03.741] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:00:03.741] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:00:22.807] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/PROJETOS DEV/port_dannovaisv_3D/src/app'
+[00:00:22.808] Server  ERROR    ⨯ "unhandledRejection:" Error: ENOENT: no such file or directory, scandir '/Users/PROJETOS DEV/port_dannovaisv_3D/src/app'
+[00:00:22.810] Server  ERROR    ⨯ "unhandledRejection: " Error: ENOENT: no such file or directory, scandir '/Users/PROJETOS DEV/port_dannovaisv_3D/src/app'
