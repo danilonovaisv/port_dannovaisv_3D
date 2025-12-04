@@ -211,3 +211,5 @@ I1204 03:36:46.831518   79692 load.go:109] Finished reloading
 [error] [Firebase Plugin] error:  {}
 [debug] [2025-12-04T06:36:47.887Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
 [debug] [2025-12-04T06:36:47.887Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] [Firebase Plugin] Stopping Data Connect toolkit
+[warn] ⚠  Data Connect Emulator has exited upon receiving signal: SIGINT 

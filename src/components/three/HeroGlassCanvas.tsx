@@ -71,7 +71,7 @@ export default function HeroGlassCanvas({
       >
         <Suspense fallback={null}>
           <GlassOrb pointer={pointer} scroll={scroll} />
-          <Environment preset="studio" />
+          <Environment preset="city" background blur={0.8} />
         </Suspense>
       </Canvas>
     </div>
