@@ -4,7 +4,7 @@ import React, { FC, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CATEGORIES } from '@/lib/constants';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import HeroGlassCanvas from '../three/HeroGlassCanvas';
+import HeroGlassCanvas from '../3d/HeroGlassCanvas';
 
 const PortfolioShowcaseSection: FC = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);

@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FEATURED_PROJECTS } from '@/lib/constants';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import HeroGlassCanvas from '../three/HeroGlassCanvas';
+import HeroGlassCanvas from '../3d/HeroGlassCanvas';
 
 const FeaturedProjects: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);

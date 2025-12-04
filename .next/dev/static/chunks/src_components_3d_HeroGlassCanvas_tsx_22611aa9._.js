@@ -8,7 +8,7 @@
   "static/chunks/node_modules_@react-three_fiber_dist_3f01f51b._.js",
   "static/chunks/node_modules_three-stdlib_1f08e6ce._.js",
   "static/chunks/d0661_three-mesh-bvh_src_bba070b3._.js",
-  "static/chunks/node_modules_74294d7a._.js",
+  "static/chunks/node_modules_c8203fca._.js",
   "static/chunks/src_components_3d_ad5566df._.js"
 ],
     source: "dynamic"

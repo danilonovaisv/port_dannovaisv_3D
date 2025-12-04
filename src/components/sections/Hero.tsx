@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, Variants, useMotionValueEvent } from 'framer-motion';
-import HeroGlassCanvas from '../three/HeroGlassCanvas';
+import HeroGlassCanvas from '../3d/HeroGlassCanvas';
 import { ArrowRight } from 'lucide-react';
 import { ASSETS } from '@/lib/constants';
 

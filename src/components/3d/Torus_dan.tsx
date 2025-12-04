@@ -6,7 +6,7 @@ import { useFrame, useThree, ThreeEvent } from "@react-three/fiber";
 import {
   MeshTransmissionMaterial,
   MeshRefractionMaterial,
-  useCubeTexture,
+  useEnvironment,
   useGLTF,
 } from "@react-three/drei";
 
@@ -44,10 +44,11 @@ const TorusDan: React.FC<TorusDanProps> = ({
 
   const baseScale = viewport.width / 3.5;
 
-  const envMap = useCubeTexture(
-    ["px.png", "nx.png", "py.png", "ny.png", "pz.png", "nz.png"],
-    { path: "/media/cubemap/" }
-  );
+  const envMap = useEnvironment({ preset: "city" });
+  // const envMap = useCubeTexture(
+  //   ["px.png", "nx.png", "py.png", "ny.png", "pz.png", "nz.png"],
+  //   { path: "/media/cubemap/" }
+  // );
 
   const prefersReducedMotion =
     typeof window !== "undefined" &&
