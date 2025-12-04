@@ -4,11 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "tailwind:build": "node scripts/build-tailwind-css.js",
+    "tailwind:watch": "tailwindcss -i src/app/globals.css -o src/app/globals.generated.css --config tailwind.config.ts --watch",
+    "dev": "concurrently \"npm run tailwind:watch\" \"next dev\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "npm run build"
+    "test": "npm run build",
+    "prebuild": "npm run tailwind:build",
+    "prestart": "npm run tailwind:build"
   },
   "dependencies": {
     "@dataconnect/generated": "file:src/dataconnect-generated",
@@ -27,7 +31,6 @@
     "three-stdlib": "^2.36.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.17",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
@@ -38,17 +41,13 @@
     "@vitejs/plugin-react": "^5.1.1",
     "autoprefixer": "^10.4.22",
     "eslint": "^9.39.1",
+    "concurrently": "^8.1.0",
     "eslint-config-next": "^16.0.7",
     "jest": "^30.2.0",
-    "lightningcss-wasm": "^1.30.2",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.17",
+    "tailwindcss": "^3.4.13",
     "ts-jest": "^29.4.6",
     "typescript": "^5.9.3",
     "vite": "^7.2.6"
-  }
-  ,
-  "optionalDependencies": {
-    "@tailwindcss/oxide-wasm32-wasi": "4.1.17"
   }
 }
