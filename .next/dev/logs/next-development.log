@@ -1,11 +1,11 @@
-[00:00:00.651] Server  LOG      ✓ Ready in 451ms
-[00:00:04.041] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
-[00:00:04.042] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
-[00:00:04.169] Browser WARN    value.onChange(callback) is deprecated. Switch to value.on("change", callback).
-[00:00:05.005] Browser ERROR   uncaughtError: TypeError: Cannot destructure property 'aberrationStrength' from null or undefined value
-[00:00:05.005] Browser ERROR   uncaughtError: TypeError: undefined is not an object (evaluating 'delete child.object.__r3f')
-[00:00:05.005] Browser ERROR   uncaughtError: TypeError: undefined is not an object (evaluating 'delete child.object.__r3f')
-[00:00:05.005] Browser ERROR   uncaughtError: TypeError: undefined is not an object (evaluating 'delete child.object.__r3f')
-[00:00:05.005] Browser ERROR   uncaughtError: TypeError: undefined is not an object (evaluating 'delete child.object.__r3f')
-[00:00:05.005] Browser ERROR   uncaughtError: TypeError: undefined is not an object (evaluating 'delete child.object.__r3f')
-[00:00:05.513] Browser LOG     THREE.WebGLRenderer: Context Lost.
+[00:00:00.627] Server  LOG      ✓ Ready in 433ms
+[00:00:05.262] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:00:05.263] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:00:05.263] Browser WARN    value.onChange(callback) is deprecated. Switch to value.on("change", callback).
+[00:00:05.632] Browser ERROR   uncaughtError: TypeError: Cannot destructure property 'aberrationStrength' from null or undefined value
+[00:00:05.632] Browser ERROR   uncaughtError: TypeError: undefined is not an object (evaluating 'delete child.object.__r3f')
+[00:00:05.632] Browser ERROR   uncaughtError: TypeError: undefined is not an object (evaluating 'delete child.object.__r3f')
+[00:00:05.632] Browser ERROR   uncaughtError: TypeError: undefined is not an object (evaluating 'delete child.object.__r3f')
+[00:00:05.632] Browser ERROR   uncaughtError: TypeError: undefined is not an object (evaluating 'delete child.object.__r3f')
+[00:00:05.632] Browser ERROR   uncaughtError: TypeError: undefined is not an object (evaluating 'delete child.object.__r3f')
+[00:00:06.146] Browser LOG     THREE.WebGLRenderer: Context Lost.
