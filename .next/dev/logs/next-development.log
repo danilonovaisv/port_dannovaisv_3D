@@ -1,5 +1,6 @@
-[00:00:00.609] Server  LOG      ✓ Ready in 412ms
-[00:00:05.234] Browser ERROR   uncaughtError: SyntaxError: Unexpected token ':'
-[00:00:05.474] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
-[00:00:05.474] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
-[00:00:05.474] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:00:00.761] Server  LOG      ✓ Ready in 505ms
+[00:00:05.339] Server  LOG      ○ Compiling / ...
+[00:00:05.822] Browser ERROR   uncaughtError: SyntaxError: Unexpected token ':'
+[00:00:06.002] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:00:06.002] Browser ERROR   unhandledRejection: NotSupportedError: Cannot define multiple custom elements with the same tag name
+[00:00:06.111] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
