@@ -82,7 +82,7 @@ export default function GlassOrb({ pointer, scroll }: GlassOrbProps) {
         position={[4, 6, 5]}
       />
       <spotLight
-        intensity={1.6}
+        intensity={2.6}
         position={[-3, -2, 3]}
         angle={0.6}
         penumbra={0.5}

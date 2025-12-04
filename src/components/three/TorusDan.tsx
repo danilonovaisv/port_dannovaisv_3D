@@ -30,20 +30,20 @@ export default function TorusDan(props: GroupProps) {
                 >
                     <MeshTransmissionMaterial
                         backside
-                        samples={24}
-                        resolution={256}
-                        thickness={0.5}
+                        samples={30}
+                        resolution={1024}
+                        thickness={0.7}
                         roughness={0.05}
                         transmission={1}
-                        ior={1.2}
+                        ior={2.2}
                         chromaticAberration={0.2}
                         anisotropy={0.15}
                         distortion={0.35}
                         distortionScale={0.7}
                         temporalDistortion={0.35}
                         attenuationColor="#ffffff"
-                        attenuationDistance={1}
-                        envMapIntensity={1}
+                        attenuationDistance={0.5}
+                        envMapIntensity={0.5}
                     />
                 </mesh>
             )}

@@ -1,13 +1,13 @@
 'use client';
 
-import { Suspense, useState } from 'react';
-import type { PointerEvent } from 'react';
-import { Canvas } from '@react-three/fiber';
 import { Environment } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 import {
-  type MotionValue,
-  useMotionValueEvent,
+    type MotionValue,
+    useMotionValueEvent,
 } from 'framer-motion';
+import type { PointerEvent } from 'react';
+import { Suspense, useState } from 'react';
 import GlassOrb from './GlassOrb';
 
 type PointerState = {

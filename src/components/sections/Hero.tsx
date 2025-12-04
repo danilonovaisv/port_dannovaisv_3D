@@ -1,15 +1,15 @@
 'use client';
 
-import { useRef } from 'react';
-import type { RefObject } from 'react';
-import dynamic from 'next/dynamic';
 import {
-  motion,
-  useScroll,
-  useTransform,
-  type MotionValue,
+    type MotionValue,
+    motion,
+    useScroll,
+    useTransform,
 } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import dynamic from 'next/dynamic';
+import type { RefObject } from 'react';
+import { useRef } from 'react';
 
 const HeroGlassCanvas = dynamic(
   () => import('@/components/three/HeroGlassCanvas'),
@@ -23,7 +23,7 @@ function useHeroScroll(sectionRef: RefObject<HTMLElement>) {
   });
 
   const orbOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const brandY = useTransform(scrollYProgress, [0, 1], [0, 40]);
+  const brandY = useTransform(scrollYProgress, [0, 3], [0, 40]);
 
   return { scrollYProgress, orbOpacity, brandY };
 }
@@ -32,7 +32,7 @@ export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress, orbOpacity, brandY } = useHeroScroll(sectionRef);
 
-  const navItems = ['home', 'sobre', 'portfolio showcase', 'contato'];
+  const navItems = ['home', 'sobre', 'portfolio', 'contato'];
 
   return (
     <section
@@ -74,9 +74,7 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="space-y-3"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-500">
-              brand & product design
-            </p>
+
 
             <h1 className="text-4xl font-black leading-tight text-blue-600 md:text-5xl lg:text-6xl">
               Design,
