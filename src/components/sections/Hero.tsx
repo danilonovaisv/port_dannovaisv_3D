@@ -58,6 +58,8 @@ const Hero: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  const navItems = ['home', 'sobre', 'portfolio showcase', 'contato'];
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end end'],
@@ -84,92 +86,85 @@ const Hero: React.FC = () => {
           style={{ opacity: contentOpacity, scale: contentScale, y: contentY }}
           className="absolute inset-0 container mx-auto px-6 md:px-12 lg:px-16 h-full z-10"
         >
-          <div className="flex flex-col items-center justify-center gap-16 min-h-[80vh] h-full pt-24 md:pt-0 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col items-center gap-6 w-full max-w-2xl relative"
-            >
-              <span className="text-[#0057FF] text-sm md:text-base tracking-[0.4em] uppercase">
-                [ BRAND AWARENESS ]
-              </span>
+          <div className="flex flex-col gap-16 h-full pt-10 md:pt-16">
+            <header className="flex items-center justify-between w-full max-w-6xl mx-auto">
+              <div className="text-2xl font-bold flex items-center gap-2 text-[#0057FF]">
+                <span className="block w-10 h-10 rounded-2xl border border-[#0057FF]/30" />
+                Danilo
+              </div>
+              <nav className="hidden md:flex gap-8 text-sm font-semibold tracking-wide text-[#0057FF]">
+                {navItems.map((item) => (
+                  <a key={item} href={`/#${item.replace(' ', '-')}`} className="lowercase hover:text-[#111111]">
+                    {item}
+                  </a>
+                ))}
+              </nav>
+            </header>
 
-              <div className="w-full h-[35vh] md:h-[50vh] flex items-center justify-center">
+            <div className="flex flex-col items-center gap-6 h-full justify-center">
+              <motion.div
+                className="w-full max-w-[320px] md:max-w-[480px]"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.85 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
-                  className="w-full h-full"
+                  className="w-full aspect-square"
                 >
                   <HeroGlassCanvas />
                 </motion.div>
-              </div>
-            </motion.div>
-
-            <div className="flex flex-col items-center gap-6 w-full max-w-3xl">
-              <div className="text-[4rem] md:text-6xl lg:text-[6.5rem] font-extrabold tracking-[-0.04em] font-sans flex flex-col items-center gap-2 leading-[0.9]">
-                <div className="md:hidden flex flex-col">
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="text-[#0057FF]"
-                  >
-                    Design,
-                  </motion.span>
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="text-[#111111]"
-                  >
-                    não é só
-                  </motion.span>
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
-                    className="text-[#111111]"
-                  >
-                    estética.
-                  </motion.span>
-                </div>
-
-                <div className="hidden md:flex flex-col items-center gap-0">
-                  <AnimatedTextLine text="Design," delay={0.2} colorClass="text-[#0057FF]" className="text-center" />
-                  <AnimatedTextLine text="não é só" delay={0.5} colorClass="text-[#111111]" className="text-center" />
-                  <AnimatedTextLine text="estética." delay={0.8} colorClass="text-[#111111]" className="text-center" />
-                </div>
-              </div>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.2, ease: 'easeOut', delay: 1.2 }}
-                className="mb-4 md:mb-6"
-              >
-                <p className="text-[#0057FF] text-lg md:text-xl font-medium tracking-wide">
-                  [ É intenção, é estratégia, é experiência. ]
-                </p>
               </motion.div>
 
-              <motion.a
-                href="/sobre"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 1.4 }}
-                whileHover={{ scale: 1.05, boxShadow: '0 10px 30px -10px rgba(0, 87, 255, 0.5)' }}
-                whileTap={{ scale: 0.98 }}
-                className="group bg-[#0057FF] text-white rounded-full pl-8 pr-6 py-4 flex items-center gap-3 font-semibold text-base md:text-lg shadow-xl shadow-[#0057FF]/20 transition-all"
-              >
-                get to know me better
-                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20 group-hover:bg-white/30 transition-colors">
-                  <ArrowRight className="w-4 h-4 text-white" />
-                </span>
-              </motion.a>
+              <div className="w-full max-w-3xl text-left">
+                <div className="text-[4rem] md:text-[5.5rem] lg:text-[6.5rem] font-extrabold tracking-[-0.04em] leading-[0.95] text-[#111111]">
+                  <div className="md:hidden flex flex-col">
+                    <motion.span className="text-[#0057FF]" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+                      Design,
+                    </motion.span>
+                    <motion.span className="text-[#111111]" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+                      não é só
+                    </motion.span>
+                    <motion.span className="text-[#111111]" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}>
+                      estética.
+                    </motion.span>
+                  </div>
+
+                  <div className="hidden md:flex flex-col">
+                    <AnimatedTextLine text="Design," delay={0.2} colorClass="text-[#0057FF]" />
+                    <AnimatedTextLine text="não é só" delay={0.5} />
+                    <AnimatedTextLine text="estética." delay={0.8} />
+                  </div>
+                </div>
+
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.2, ease: 'easeOut', delay: 1.2 }}
+                  className="text-[#0057FF] text-lg md:text-xl font-medium tracking-wide mt-4"
+                >
+                  [ É intenção, é estratégia, é experiência. ]
+                </motion.p>
+
+                <motion.a
+                  href="/sobre"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 1.4 }}
+                  whileHover={{ scale: 1.05, boxShadow: '0 10px 30px -10px rgba(0, 87, 255, 0.5)' }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#0057FF] px-10 py-4 text-white font-semibold text-base md:text-lg shadow-xl shadow-[#0057FF]/20 transition-all"
+                >
+                  get to know me better
+                  <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20 group-hover:bg-white/30 transition-colors">
+                    <ArrowRight className="w-4 h-4 text-white" />
+                  </span>
+                </motion.a>
+              </div>
             </div>
           </div>
         </motion.div>
