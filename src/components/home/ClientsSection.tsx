@@ -34,7 +34,7 @@ const ClientsSection: React.FC = () => {
                     initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as any }}
+                    transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as const }}
                 >
                     marcas com as quais já trabalhei
                 </motion.h2>

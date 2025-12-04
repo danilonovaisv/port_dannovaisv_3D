@@ -28,13 +28,13 @@ type GlassOrbProps = {
 
 const GlassOrbInner: React.FC<GlassOrbProps> = ({ reducedMotion }) => {
     // Adjusted path to match actual file name
-    const gltf = useGLTF('/media/Torus_dan.glb') as any;
+    const gltf = useGLTF('/media/Torus_dan.glb') as unknown as { scene: THREE.Group };
     const meshRef = useRef<THREE.Mesh>(null);
 
     const geometry = React.useMemo(() => {
         let firstMesh: THREE.Mesh | null = null;
-        gltf.scene.traverse((child: any) => {
-            if (!firstMesh && child.isMesh) {
+        gltf.scene.traverse((child: THREE.Object3D) => {
+            if (!firstMesh && (child as THREE.Mesh).isMesh) {
                 firstMesh = child as THREE.Mesh;
             }
         });
@@ -219,7 +219,7 @@ const HeroSection: React.FC = () => {
                             initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 16 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.4 }}
-                            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] as any }}
+                            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] as const }}
                         >
                             [ É intenção, é estratégia, é experiência. ]
                         </motion.div>
@@ -228,7 +228,7 @@ const HeroSection: React.FC = () => {
                             initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.4 }}
-                            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 0.61, 0.36, 1] as any }}
+                            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 0.61, 0.36, 1] as const }}
                         >
                             <Link href="/sobre" aria-label="Conhecer melhor o trabalho de Danilo">
                                 <motion.button

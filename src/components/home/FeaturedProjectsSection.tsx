@@ -66,7 +66,7 @@ const FeaturedProjectsSection: React.FC = () => {
                     initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as any }}
+                    transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as const }}
                 >
                     <h2
                         id="featured-projects-heading"
@@ -102,7 +102,7 @@ const FeaturedProjectsSection: React.FC = () => {
                                 },
                                 visible: { opacity: 1, y: 0, scale: 1 },
                             }}
-                            transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as any }}
+                            transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as const }}
                         >
                             <Link
                                 href={`/portfolio/${project.slug}`}
@@ -162,7 +162,7 @@ const FeaturedProjectsSection: React.FC = () => {
                             },
                             visible: { opacity: 1, y: 0, scale: 1 },
                         }}
-                        transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as any }}
+                        transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as const }}
                         className="flex h-full items-center justify-center rounded-3xl bg-[#0057FF] p-6 text-white shadow-md md:col-span-2 lg:col-span-1"
                     >
                         <div className="space-y-4 text-center">

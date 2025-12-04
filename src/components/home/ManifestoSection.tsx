@@ -35,7 +35,7 @@ const ManifestoSection: React.FC = () => {
                     initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 40, scale: prefersReducedMotion ? 1 : 0.96 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
                     viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 0.7, ease: [0.22, 0.61, 0.36, 1] as any }}
+                    transition={{ duration: 0.7, ease: [0.22, 0.61, 0.36, 1] as const }}
                 >
                     <video
                         ref={videoRef}

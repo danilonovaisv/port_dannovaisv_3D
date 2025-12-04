@@ -18,7 +18,7 @@ const ContactSection: React.FC = () => {
                     initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as any }}
+                    transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as const }}
                 >
                     <h2
                         id="contact-heading"
@@ -36,7 +36,7 @@ const ContactSection: React.FC = () => {
                     initial={{ opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as any }}
+                    transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as const }}
                 >
                     {/* Coluna esquerda: infos e redes */}
                     <div className="space-y-6 text-sm text-[#111111]">

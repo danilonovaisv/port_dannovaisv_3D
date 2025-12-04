@@ -52,7 +52,7 @@ const PortfolioShowcaseSection: React.FC = () => {
                                 initial={{ opacity: prefersReducedMotion ? 1 : 0, x: prefersReducedMotion ? 0 : 40 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, amount: 0.3 }}
-                                transition={{ duration: 0.6, delay: index * 0.06, ease: [0.22, 0.61, 0.36, 1] as any }}
+                                transition={{ duration: 0.6, delay: index * 0.06, ease: [0.22, 0.61, 0.36, 1] as const }}
                             >
                                 <Link
                                     href={`/portfolio?category=${encodeURIComponent(category.id)}`}

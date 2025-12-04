@@ -35,7 +35,7 @@ const SiteHeader: React.FC = () => {
 
     const headerVariants = {
         hidden: { y: prefersReducedMotion ? 0 : -24, opacity: prefersReducedMotion ? 1 : 0 },
-        visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as any } },
+        visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as const } },
     };
 
     return (
