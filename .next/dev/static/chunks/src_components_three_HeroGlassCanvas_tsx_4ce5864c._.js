@@ -7,7 +7,7 @@
   "static/chunks/node_modules_three_build_three_module_f7d46d9b.js",
   "static/chunks/node_modules_@react-three_fiber_dist_75fd0def._.js",
   "static/chunks/node_modules_three-stdlib_1f08e6ce._.js",
-  "static/chunks/node_modules_20ac235f._.js",
+  "static/chunks/node_modules_21dc6e5f._.js",
   "static/chunks/src_components_three_8965ebb4._.js"
 ],
     source: "dynamic"
