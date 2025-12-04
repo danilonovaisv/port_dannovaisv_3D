@@ -1,0 +1,5 @@
+[00:00:00.841] Server  LOG      ✓ Ready in 599ms
+[00:00:04.503] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:00:05.574] Browser ERROR   uncaughtError: Error: Could not load px.png,nx.png,py.png,ny.png,pz.png,nz.png: undefined
+[00:00:05.574] Browser ERROR   uncaughtError: Error: Could not load px.png,nx.png,py.png,ny.png,pz.png,nz.png: undefined
+[00:00:06.084] Browser LOG     THREE.WebGLRenderer: Context Lost.
