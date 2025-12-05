@@ -1,0 +1,280 @@
+===========================================
+ Projeto: port_dannovaisv_3D
+ Data: Thu Dec  4 19:44:00 -03 2025
+ Package manager detectado: yarn
+===========================================
+
+### Ambiente
+
+$ node -v
+v22.21.1
+
+$ npm -v
+11.6.4
+
+Sistema operacional:
+Darwin danilo-novais.local 25.2.0 Darwin Kernel Version 25.2.0: Tue Nov 18 21:09:40 PST 2025; root:xnu-12377.61.12~1/RELEASE_ARM64_T6000 arm64
+
+-------------------------------------------
+### Git status
+
+$ git status -sb
+## main...origin/main
+ D .next/dev/lock
+ M .next/dev/logs/next-development.log
+ M .next/dev/prerender-manifest.json
+ M .next/dev/server/app/page_client-reference-manifest.js
+ M .next/dev/static/chunks/app_page_tsx_69016a45._.js
+ M .next/dev/trace
+ M yarn.lock
+?? .next/dev/server/chunks/ssr/node_modules_127aaec4._.js
+?? .next/dev/server/chunks/ssr/node_modules_127aaec4._.js.map
+?? .next/dev/static/chunks/node_modules_20ae6313._.js
+?? .next/dev/static/chunks/node_modules_20ae6313._.js.map
+?? project-report-20251204-194400.txt
+
+-------------------------------------------
+### Lint (npm run lint)
+
+$ npm run lint
+
+> danilo-portfolio@1.0.0 lint
+> eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0
+
+(node:37122) ESLintIgnoreWarning: The ".eslintignore" file is no longer supported. Switch to using the "ignores" property in "eslint.config.js": https://eslint.org/docs/latest/use/configure/migration-guide#ignoring-files
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Oops! Something went wrong! :(
+
+ESLint: 9.39.1
+
+ESLint couldn't find an eslint.config.(js|mjs|cjs) file.
+
+From ESLint v9.0.0, the default configuration file is now eslint.config.js.
+If you are using a .eslintrc.* file, please follow the migration guide
+to update your configuration file to the new format:
+
+https://eslint.org/docs/latest/use/configure/migration-guide
+
+If you still have problems after following the migration guide, please stop by
+https://eslint.org/chat/help to chat with the team.
+
+
+-------------------------------------------
+### Testes (npm run test)
+
+$ npm run test
+
+> danilo-portfolio@1.0.0 test
+> vitest
+
+
+[1m[44m DEV [49m[22m [34mv4.0.15 [39m[90m/Users/PROJETOS DEV/port_dannovaisv_3D[39m
+
+ [31m❯[39m components/layout/Header.test.tsx [2m([22m[2m3 tests[22m[2m | [22m[31m3 failed[39m[2m)[22m[32m 3[2mms[22m[39m
+[31m     [31m×[31m deve renderizar o logo corretamente[39m[32m 2[2mms[22m[39m
+[31m     [31m×[31m deve renderizar todos os links de navegação desktop[39m[32m 0[2mms[22m[39m
+[31m     [31m×[31m deve alternar o menu mobile ao clicar no botão[39m[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 3 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m components/layout/Header.test.tsx[2m > [22mHeader Component[2m > [22mdeve renderizar o logo corretamente
+[31m[1mReferenceError[22m: document is not defined[39m
+[90m [2m❯[22m Proxy.render node_modules/@testing-library/react/dist/pure.js:[2m257:5[22m[39m
+[36m [2m❯[22m components/layout/Header.test.tsx:[2m38:5[22m[39m
+    [90m 36| [39m[34mdescribe[39m([32m'Header Component'[39m[33m,[39m () [33m=>[39m {
+    [90m 37| [39m  [34mit[39m([32m'deve renderizar o logo corretamente'[39m[33m,[39m () [33m=>[39m {
+    [90m 38| [39m    [34mrender[39m([33m<[39m[33mHeader[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m   | [39m    [31m^[39m
+    [90m 39| [39m    [35mconst[39m logo [33m=[39m screen[33m.[39m[34mgetByRole[39m([32m'img'[39m[33m,[39m { name[33m:[39m [36m/Danilo Novais/i[39m })[33m;[39m
+    [90m 40| [39m    [34mexpect[39m(logo)[33m.[39m[34mtoBeInTheDocument[39m()[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m components/layout/Header.test.tsx[2m > [22mHeader Component[2m > [22mdeve renderizar todos os links de navegação desktop
+[31m[1mReferenceError[22m: document is not defined[39m
+[90m [2m❯[22m Proxy.render node_modules/@testing-library/react/dist/pure.js:[2m257:5[22m[39m
+[36m [2m❯[22m components/layout/Header.test.tsx:[2m44:5[22m[39m
+    [90m 42| [39m
+    [90m 43| [39m  [34mit[39m([32m'deve renderizar todos os links de navegação desktop'[39m[33m,[39m () [33m=>[39m {
+    [90m 44| [39m    [34mrender[39m([33m<[39m[33mHeader[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m   | [39m    [31m^[39m
+    [90m 45| [39m
+    [90m 46| [39m    [90m// Filtra apenas os links visíveis no desktop (dentro do nav > ul)[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m components/layout/Header.test.tsx[2m > [22mHeader Component[2m > [22mdeve alternar o menu mobile ao clicar no botão
+[31m[1mReferenceError[22m: document is not defined[39m
+[90m [2m❯[22m Proxy.render node_modules/@testing-library/react/dist/pure.js:[2m257:5[22m[39m
+[36m [2m❯[22m components/layout/Header.test.tsx:[2m55:5[22m[39m
+    [90m 53| [39m
+    [90m 54| [39m  [34mit[39m([32m'deve alternar o menu mobile ao clicar no botão'[39m[33m,[39m () [33m=>[39m {
+    [90m 55| [39m    [34mrender[39m([33m<[39m[33mHeader[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m   | [39m    [31m^[39m
+    [90m 56| [39m
+    [90m 57| [39m    [90m// O menu mobile deve começar fechado[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m3 failed[39m[22m[90m (3)[39m
+[2m   Start at [22m 19:44:01
+[2m   Duration [22m 374ms[2m (transform 52ms, setup 0ms, import 207ms, tests 3ms, environment 0ms)[22m
+
+[1m[41m FAIL [49m[22m [31mTests failed. Watching for file changes...[39m
+       [2mpress [22m[1mh[22m[2m to show help[22m[2m, [22m[2mpress [22m[1mq[22m[2m to quit[22m
+c[3J[1m[44m RERUN [49m[22m [34m[2mpackage.json [22m[34mx1 [34m[39m
+
+ [31m❯[39m components/layout/Header.test.tsx [2m([22m[2m3 tests[22m[2m | [22m[31m3 failed[39m[2m)[22m[32m 3[2mms[22m[39m
+[31m     [31m×[31m deve renderizar o logo corretamente[39m[32m 2[2mms[22m[39m
+[31m     [31m×[31m deve renderizar todos os links de navegação desktop[39m[32m 0[2mms[22m[39m
+[31m     [31m×[31m deve alternar o menu mobile ao clicar no botão[39m[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 3 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m components/layout/Header.test.tsx[2m > [22mHeader Component[2m > [22mdeve renderizar o logo corretamente
+[31m[1mReferenceError[22m: document is not defined[39m
+[90m [2m❯[22m Proxy.render node_modules/@testing-library/react/dist/pure.js:[2m257:5[22m[39m
+[36m [2m❯[22m components/layout/Header.test.tsx:[2m38:5[22m[39m
+    [90m 36| [39m[34mdescribe[39m([32m'Header Component'[39m[33m,[39m () [33m=>[39m {
+    [90m 37| [39m  [34mit[39m([32m'deve renderizar o logo corretamente'[39m[33m,[39m () [33m=>[39m {
+    [90m 38| [39m    [34mrender[39m([33m<[39m[33mHeader[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m   | [39m    [31m^[39m
+    [90m 39| [39m    [35mconst[39m logo [33m=[39m screen[33m.[39m[34mgetByRole[39m([32m'img'[39m[33m,[39m { name[33m:[39m [36m/Danilo Novais/i[39m })[33m;[39m
+    [90m 40| [39m    [34mexpect[39m(logo)[33m.[39m[34mtoBeInTheDocument[39m()[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m components/layout/Header.test.tsx[2m > [22mHeader Component[2m > [22mdeve renderizar todos os links de navegação desktop
+[31m[1mReferenceError[22m: document is not defined[39m
+[90m [2m❯[22m Proxy.render node_modules/@testing-library/react/dist/pure.js:[2m257:5[22m[39m
+[36m [2m❯[22m components/layout/Header.test.tsx:[2m44:5[22m[39m
+    [90m 42| [39m
+    [90m 43| [39m  [34mit[39m([32m'deve renderizar todos os links de navegação desktop'[39m[33m,[39m () [33m=>[39m {
+    [90m 44| [39m    [34mrender[39m([33m<[39m[33mHeader[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m   | [39m    [31m^[39m
+    [90m 45| [39m
+    [90m 46| [39m    [90m// Filtra apenas os links visíveis no desktop (dentro do nav > ul)[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m components/layout/Header.test.tsx[2m > [22mHeader Component[2m > [22mdeve alternar o menu mobile ao clicar no botão
+[31m[1mReferenceError[22m: document is not defined[39m
+[90m [2m❯[22m Proxy.render node_modules/@testing-library/react/dist/pure.js:[2m257:5[22m[39m
+[36m [2m❯[22m components/layout/Header.test.tsx:[2m55:5[22m[39m
+    [90m 53| [39m
+    [90m 54| [39m  [34mit[39m([32m'deve alternar o menu mobile ao clicar no botão'[39m[33m,[39m () [33m=>[39m {
+    [90m 55| [39m    [34mrender[39m([33m<[39m[33mHeader[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m   | [39m    [31m^[39m
+    [90m 56| [39m
+    [90m 57| [39m    [90m// O menu mobile deve começar fechado[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m3 failed[39m[22m[90m (3)[39m
+[2m   Start at [22m 19:45:57
+[2m   Duration [22m 152ms
+
+[1m[41m FAIL [49m[22m [31mTests failed. Watching for file changes...[39m
+       [2mpress [22m[1mh[22m[2m to show help[22m[2m, [22m[2mpress [22m[1mq[22m[2m to quit[22m
+c[3J[1m[44m RERUN [49m[22m [34m[2mcomponents/layout/Header.test.tsx [22m[34mx2 [34m[39m
+
+ [31m❯[39m components/layout/Header.test.tsx [2m([22m[2m3 tests[22m[2m | [22m[31m3 failed[39m[2m)[22m[32m 3[2mms[22m[39m
+[31m     [31m×[31m deve renderizar o logo corretamente[39m[32m 2[2mms[22m[39m
+[31m     [31m×[31m deve renderizar todos os links de navegação desktop[39m[32m 0[2mms[22m[39m
+[31m     [31m×[31m deve alternar o menu mobile ao clicar no botão[39m[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 3 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m components/layout/Header.test.tsx[2m > [22mHeader Component[2m > [22mdeve renderizar o logo corretamente
+[31m[1mReferenceError[22m: document is not defined[39m
+[90m [2m❯[22m Proxy.render node_modules/@testing-library/react/dist/pure.js:[2m257:5[22m[39m
+[36m [2m❯[22m components/layout/Header.test.tsx:[2m38:5[22m[39m
+    [90m 36| [39m[34mdescribe[39m([32m'Header Component'[39m[33m,[39m () [33m=>[39m {
+    [90m 37| [39m  [34mit[39m([32m'deve renderizar o logo corretamente'[39m[33m,[39m () [33m=>[39m {
+    [90m 38| [39m    [34mrender[39m([33m<[39m[33mHeader[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m   | [39m    [31m^[39m
+    [90m 39| [39m    [35mconst[39m logo [33m=[39m screen[33m.[39m[34mgetByRole[39m([32m'img'[39m[33m,[39m { name[33m:[39m [36m/Danilo Novais/i[39m })[33m;[39m
+    [90m 40| [39m    [34mexpect[39m(logo)[33m.[39m[34mtoBeInTheDocument[39m()[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m components/layout/Header.test.tsx[2m > [22mHeader Component[2m > [22mdeve renderizar todos os links de navegação desktop
+[31m[1mReferenceError[22m: document is not defined[39m
+[90m [2m❯[22m Proxy.render node_modules/@testing-library/react/dist/pure.js:[2m257:5[22m[39m
+[36m [2m❯[22m components/layout/Header.test.tsx:[2m44:5[22m[39m
+    [90m 42| [39m
+    [90m 43| [39m  [34mit[39m([32m'deve renderizar todos os links de navegação desktop'[39m[33m,[39m () [33m=>[39m {
+    [90m 44| [39m    [34mrender[39m([33m<[39m[33mHeader[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m   | [39m    [31m^[39m
+    [90m 45| [39m
+    [90m 46| [39m    [90m// Filtra apenas os links visíveis no desktop (dentro do nav > ul)[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m components/layout/Header.test.tsx[2m > [22mHeader Component[2m > [22mdeve alternar o menu mobile ao clicar no botão
+[31m[1mReferenceError[22m: document is not defined[39m
+[90m [2m❯[22m Proxy.render node_modules/@testing-library/react/dist/pure.js:[2m257:5[22m[39m
+[36m [2m❯[22m components/layout/Header.test.tsx:[2m55:5[22m[39m
+    [90m 53| [39m
+    [90m 54| [39m  [34mit[39m([32m'deve alternar o menu mobile ao clicar no botão'[39m[33m,[39m () [33m=>[39m {
+    [90m 55| [39m    [34mrender[39m([33m<[39m[33mHeader[39m [33m/[39m[33m>[39m)[33m;[39m
+    [90m   | [39m    [31m^[39m
+    [90m 56| [39m
+    [90m 57| [39m    [90m// O menu mobile deve começar fechado[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m3 failed[39m[22m[90m (3)[39m
+[2m   Start at [22m 19:47:09
+[2m   Duration [22m 161ms
+
+[1m[41m FAIL [49m[22m [31mTests failed. Watching for file changes...[39m
+       [2mpress [22m[1mh[22m[2m to show help[22m[2m, [22m[2mpress [22m[1mq[22m[2m to quit[22m
+[31mCancelling test run. Press CTRL+c again to exit forcefully.
+[39m
+
+-------------------------------------------
+### Dependências desatualizadas
+
+$ yarn outdated
+yarn outdated v1.22.22
+info Color legend : 
+ "<red>"    : Major Update backward-incompatible updates 
+ "<yellow>" : Minor Update backward-compatible features 
+ "<green>"  : Patch Update backward-compatible bug fixes
+Package                Current Wanted Latest Package Type URL                           
+@dataconnect/generated 0.0.0   exotic exotic dependencies link:src/dataconnect-generated
+Done in 2.34s.
+
+-------------------------------------------
+### Depcheck (dependências não usadas / faltando)
+
+$ npx depcheck
+Unused dependencies
+* @dataconnect/generated
+* @tailwindcss/postcss
+Unused devDependencies
+* @eslint/eslintrc
+* @vitejs/plugin-react
+* autoprefixer
+* eslint-config-prettier
+* postcss
+* prettier
+* pretty-quick
+Missing dependencies
+* intersection-observer: ./setupPolyfills.ts
+
+-------------------------------------------
+### Observações
+Use este relatório para colar em uma IA (Codex/ChatGPT) e pedir:
+- Sugestões para corrigir erros de lint e testes;
+- Ajustes de dependências desatualizadas ou não utilizadas;
+- Refatorações sugeridas com base nos erros.
+

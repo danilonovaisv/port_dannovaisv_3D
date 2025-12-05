@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
 import { vi } from 'vitest';
-import React from 'react';
 
 // Mock do ResizeObserver que não existe no JSDOM
 vi.stubGlobal('ResizeObserver', class ResizeObserver {

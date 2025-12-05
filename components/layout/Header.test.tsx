@@ -7,19 +7,19 @@ import { NAV_LINKS } from '../../lib/constants';
 // Mock do Framer Motion para evitar complexidade de animação nos testes
 vi.mock('framer-motion', () => ({
   motion: {
-    header: ({ children, className, style, ...props }: any) => (
+    header: ({ children, className, style, ...props }: React.PropsWithChildren<React.HTMLAttributes<HTMLElement>>) => (
       <header className={className} style={style} {...props}>{children}</header>
     ),
-    div: ({ children, className, onClick, ...props }: any) => (
+    div: ({ children, className, onClick, ...props }: React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement>>) => (
       <div className={className} onClick={onClick} {...props}>{children}</div>
     ),
-    li: ({ children, className, ...props }: any) => (
+    li: ({ children, className, ...props }: React.PropsWithChildren<React.LiHTMLAttributes<HTMLLIElement>>) => (
       <li className={className} {...props}>{children}</li>
     ),
   },
   useScroll: () => ({ scrollY: { get: () => 0, onChange: () => { } } }),
   useTransform: () => '0px',
-  AnimatePresence: ({ children }: any) => <>{children}</>,
+  AnimatePresence: ({ children }: React.PropsWithChildren) => <>{children}</>,
 }));
 
 // Mock do Lucide React
