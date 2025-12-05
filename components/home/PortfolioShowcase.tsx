@@ -1,6 +1,7 @@
 "use client";
 
 import React, { FC, useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CATEGORIES } from '../../lib/constants';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
@@ -197,13 +198,13 @@ const PortfolioShowcaseSection: FC = () => {
                           </div>
 
                           <div className="flex gap-4">
-                             <a 
+                             <Link
                                href={`/portfolio?category=${category.id}`}
                                className="inline-flex items-center gap-3 text-[#0057FF] font-bold text-lg md:text-xl hover:underline underline-offset-8 decoration-2"
                              >
                                Ver todos os projetos
                                <ArrowUpRight className="w-6 h-6" />
-                             </a>
+                             </Link>
                           </div>
                         </div>
                       </motion.div>
@@ -223,17 +224,18 @@ const PortfolioShowcaseSection: FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="mt-24 md:mt-32 flex justify-center w-full"
           >
-            <motion.a
-              href="/#contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative inline-flex items-center gap-4 rounded-full bg-[#0057FF] px-10 py-5 md:px-12 md:py-6 text-white shadow-xl hover:shadow-[#0057FF]/40 transition-all duration-300"
-            >
-              <span className="text-lg md:text-xl font-semibold tracking-wide">let’s build something great</span>
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 group-hover:bg-white text-[#0057FF] transition-colors duration-300">
-                 <ArrowUpRight className="w-4 h-4 text-white group-hover:text-[#0057FF]" />
-              </span>
-            </motion.a>
+            <Link href="/#contact" legacyBehavior>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative inline-flex items-center gap-4 rounded-full bg-[#0057FF] px-10 py-5 md:px-12 md:py-6 text-white shadow-xl hover:shadow-[#0057FF]/40 transition-all duration-300 cursor-pointer"
+              >
+                <span className="text-lg md:text-xl font-semibold tracking-wide">let’s build something great</span>
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 group-hover:bg-white text-[#0057FF] transition-colors duration-300">
+                   <ArrowUpRight className="w-4 h-4 text-white group-hover:text-[#0057FF]" />
+                </span>
+              </motion.a>
+            </Link>
           </motion.div>
         )}
         

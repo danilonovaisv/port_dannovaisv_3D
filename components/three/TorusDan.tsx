@@ -2,36 +2,51 @@
 
 import React, { useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
-import { MeshTransmissionMaterial, Float } from '@react-three/drei';
+import { MeshTransmissionMaterial, Float, useGLTF } from '@react-three/drei';
+import { useScroll } from 'framer-motion';
 import * as THREE from 'three';
 
 const TorusDan = () => {
   const { viewport } = useThree();
   const meshRef = useRef<THREE.Mesh>(null);
 
+  // Load the GLB model
+  // @ts-ignore
+  const { nodes } = useGLTF('/media/Torus_dan.glb');
+
+  // Scroll integration
+  const { scrollYProgress } = useScroll();
+
   useFrame((state, delta) => {
     if (meshRef.current) {
-      // Continuous slow rotation
-      meshRef.current.rotation.z += delta * 0.05;
+      // Continuous slow rotation (base)
+      meshRef.current.rotation.z += delta * 0.02;
+
+      // Scroll interaction: Rotate Y based on page scroll
+      // We map the 0-1 scroll progress to a rotation range (e.g., 2 full turns)
+      const scrollRotation = scrollYProgress.get() * Math.PI * 4;
 
       // Mouse interaction (Parallax/Tilt)
       const { x, y } = state.pointer;
       
       meshRef.current.rotation.x = THREE.MathUtils.lerp(
         meshRef.current.rotation.x,
-        y * 0.2, // Sensitivity
-        0.05 // Smoothness
+        y * 0.1,
+        0.05
       );
       
+      // Combine mouse parallax + scroll rotation
+      const targetRotationY = (x * 0.1) + scrollRotation;
+
       meshRef.current.rotation.y = THREE.MathUtils.lerp(
         meshRef.current.rotation.y,
-        x * 0.2, // Sensitivity
-        0.05 // Smoothness
+        targetRotationY,
+        0.1 // Slower lerp for weightier feel
       );
     }
   });
 
-  // Responsive scale for procedural torus
+  // Responsive scale
   const responsiveScale = viewport.width < 5 ? 2.5 : 3.0;
 
   return (
@@ -46,10 +61,8 @@ const TorusDan = () => {
           ref={meshRef}
           position={[0, 0, 0]}
           rotation={[0, 0, 0]} 
+          geometry={nodes.Torus.geometry}
         >
-          {/* Procedural Geometry to replace missing GLB */}
-          <torusGeometry args={[1, 0.4, 64, 128]} />
-          
           <MeshTransmissionMaterial 
             backside={true}
             samples={6} 
