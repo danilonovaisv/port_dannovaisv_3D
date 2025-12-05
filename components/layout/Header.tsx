@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { NAV_LINKS, ASSETS } from '../../lib/constants';
 import { Menu, X } from 'lucide-react';
@@ -31,7 +32,7 @@ const Header: React.FC = () => {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="flex items-center shrink-0 relative z-[1000]">
-          <a href="/" className="block relative group">
+          <Link href="/" className="block relative group">
             {!logoError ? (
               <img 
                 src={ASSETS.logoDark} 
@@ -42,19 +43,19 @@ const Header: React.FC = () => {
             ) : (
               <span className="text-2xl font-bold text-[#111111] tracking-tighter">Danilo.</span>
             )}
-          </a>
+          </Link>
         </div>
 
         <nav className="hidden md:block">
           <ul className="flex items-center space-x-8 lg:space-x-12">
             {NAV_LINKS.map((link) => (
               <li key={link.label}>
-                <a 
+                <Link
                   href={link.href}
                   className="relative text-sm font-medium text-[#111111] hover:text-[#0057FF] transition-colors duration-200 lowercase tracking-wide block py-2"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -89,13 +90,13 @@ const Header: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 + (i * 0.1), duration: 0.4 }}
                   >
-                    <a 
+                    <Link
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="text-3xl font-medium text-[#111111] hover:text-[#0057FF] transition-colors block lowercase"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </motion.li>
                 ))}
               </ul>
