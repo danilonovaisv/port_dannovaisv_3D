@@ -5,14 +5,21 @@ import { useFrame, useThree } from '@react-three/fiber';
 import { MeshTransmissionMaterial, Float, useGLTF } from '@react-three/drei';
 import { useScroll } from 'framer-motion';
 import * as THREE from 'three';
+import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
+
+type TorusGLTFResult = GLTF & {
+  nodes?: {
+    Torus?: THREE.Mesh<THREE.BufferGeometry, THREE.Material | THREE.Material[]>;
+  };
+};
 
 const TorusDan = () => {
   const { viewport } = useThree();
   const meshRef = useRef<THREE.Mesh>(null);
 
-  // Load the GLB model
-  // @ts-ignore
-  const { nodes } = useGLTF('/media/Torus_dan.glb');
+  // Load the GLB model (with graceful fallback when unavailable)
+  const gltf = useGLTF<TorusGLTFResult>('/media/Torus_dan.glb');
+  const loadedGeometry = gltf.nodes?.Torus?.geometry;
 
   // Scroll integration
   const { scrollYProgress } = useScroll();
@@ -61,8 +68,12 @@ const TorusDan = () => {
           ref={meshRef}
           position={[0, 0, 0]}
           rotation={[0, 0, 0]} 
-          geometry={nodes.Torus.geometry}
         >
+          {loadedGeometry ? (
+            <primitive object={loadedGeometry} attach="geometry" />
+          ) : (
+            <torusGeometry args={[1, 0.4, 64, 128]} />
+          )}
           <MeshTransmissionMaterial 
             backside={true}
             samples={6} 
@@ -88,5 +99,7 @@ const TorusDan = () => {
     </group>
   );
 };
+
+useGLTF.preload('/media/Torus_dan.glb');
 
 export default TorusDan;

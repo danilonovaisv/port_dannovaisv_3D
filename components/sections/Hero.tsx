@@ -7,6 +7,8 @@ import HeroGlassCanvas from '../three/HeroGlassCanvas';
 import { ArrowRight } from 'lucide-react';
 import { ASSETS } from '../../lib/constants';
 
+const MotionLink = motion(Link);
+
 // Componente para animar texto letra por letra (efeito "digitação/reveal")
 const AnimatedTextLine: React.FC<{ 
   text: string; 
@@ -183,22 +185,21 @@ const Hero: React.FC = () => {
               <motion.div
                  className="pointer-events-auto" // Re-enable clicks
               >
-                <Link href="/sobre" legacyBehavior>
-                  <motion.a
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 1.4 }}
-                    whileHover={{ scale: 1.05, boxShadow: "0 10px 30px -10px rgba(0, 87, 255, 0.5)" }}
-                    whileTap={{ scale: 0.98 }}
-                    className="group bg-[#0057FF] text-white rounded-full pl-8 pr-6 py-4 flex items-center gap-3 font-semibold text-base md:text-lg shadow-xl shadow-[#0057FF]/20 transition-all inline-flex cursor-pointer"
-                  >
+                <MotionLink
+                  href="/sobre"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 1.4 }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 10px 30px -10px rgba(0, 87, 255, 0.5)" }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group bg-[#0057FF] text-white rounded-full pl-8 pr-6 py-4 flex items-center gap-3 font-semibold text-base md:text-lg shadow-xl shadow-[#0057FF]/20 transition-all inline-flex cursor-pointer"
+                >
                     get to know me better
                     <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20 group-hover:bg-white/30 transition-colors">
                       <ArrowRight className="w-4 h-4 text-white" />
                     </span>
-                  </motion.a>
-                </Link>
+                </MotionLink>
               </motion.div>
           </div>
         </motion.div>

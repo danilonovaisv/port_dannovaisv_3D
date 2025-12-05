@@ -7,6 +7,8 @@ import { CATEGORIES } from '../../lib/constants';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import HeroGlassCanvas from '../three/HeroGlassCanvas';
 
+const MotionLink = motion(Link);
+
 const PortfolioShowcaseSection: FC = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -224,18 +226,17 @@ const PortfolioShowcaseSection: FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="mt-24 md:mt-32 flex justify-center w-full"
           >
-            <Link href="/#contact" legacyBehavior>
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative inline-flex items-center gap-4 rounded-full bg-[#0057FF] px-10 py-5 md:px-12 md:py-6 text-white shadow-xl hover:shadow-[#0057FF]/40 transition-all duration-300 cursor-pointer"
-              >
+            <MotionLink
+              href="/#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative inline-flex items-center gap-4 rounded-full bg-[#0057FF] px-10 py-5 md:px-12 md:py-6 text-white shadow-xl hover:shadow-[#0057FF]/40 transition-all duration-300 cursor-pointer"
+            >
                 <span className="text-lg md:text-xl font-semibold tracking-wide">let’s build something great</span>
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 group-hover:bg-white text-[#0057FF] transition-colors duration-300">
                    <ArrowUpRight className="w-4 h-4 text-white group-hover:text-[#0057FF]" />
                 </span>
-              </motion.a>
-            </Link>
+            </MotionLink>
           </motion.div>
         )}
         

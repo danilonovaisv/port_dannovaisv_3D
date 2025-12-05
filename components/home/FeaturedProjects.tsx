@@ -7,6 +7,8 @@ import { FEATURED_PROJECTS } from '../../lib/constants';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import HeroGlassCanvas from '../three/HeroGlassCanvas';
 
+const MotionLink = motion(Link);
+
 const FeaturedProjects: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -38,14 +40,15 @@ const FeaturedProjects: React.FC = () => {
                 : 'aspect-[4/5]';
 
              return (
-              <Link key={project.slug} href={`/portfolio/${project.slug}`} legacyBehavior>
-                <motion.a
-                  initial={{ opacity: 0, y: 60 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-10%" }}
-                  transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98], delay: index * 0.1 }}
-                  className={`group relative flex flex-col w-full cursor-pointer ${isHero ? 'md:col-span-2' : ''}`}
-                >
+              <MotionLink
+                key={project.slug}
+                href={`/portfolio/${project.slug}`}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98], delay: index * 0.1 }}
+                className={`group relative flex flex-col w-full cursor-pointer ${isHero ? 'md:col-span-2' : ''}`}
+              >
                   {/* Container da Imagem */}
                 <div className={`relative overflow-hidden rounded-2xl bg-gray-200 w-full ${aspectRatioClass} mb-6 shadow-sm`}>
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 z-10" />
@@ -87,8 +90,7 @@ const FeaturedProjects: React.FC = () => {
                         </div>
                     </div>
                   </div>
-                </motion.a>
-              </Link>
+              </MotionLink>
              );
           })}
 
@@ -104,18 +106,17 @@ const FeaturedProjects: React.FC = () => {
                   Like what<br/>you see?
               </h3>
               
-              <Link href="/portfolio" legacyBehavior>
-                <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group relative inline-flex items-center gap-4 rounded-full bg-[#0057FF] px-10 py-5 text-white shadow-xl hover:shadow-[#0057FF]/40 transition-all duration-300 cursor-pointer"
-                >
+              <MotionLink
+                href="/portfolio"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative inline-flex items-center gap-4 rounded-full bg-[#0057FF] px-10 py-5 text-white shadow-xl hover:shadow-[#0057FF]/40 transition-all duration-300 cursor-pointer"
+              >
                   <span className="text-lg font-bold tracking-wide">view projects</span>
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 group-hover:bg-white text-[#0057FF] transition-colors duration-300">
                      <ArrowUpRight className="w-4 h-4 text-white group-hover:text-[#0057FF]" />
                   </span>
-                </motion.a>
-              </Link>
+              </MotionLink>
               
           </motion.div>
 
