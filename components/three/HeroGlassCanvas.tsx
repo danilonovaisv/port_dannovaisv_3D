@@ -12,11 +12,8 @@ const HeroGlassCanvas: React.FC<{ className?: string }> = ({ className }) => {
         <PerspectiveCamera makeDefault position={[0, 0, 12]} fov={30} />
         
         {/* Lights designed to enhance glass reflection/refraction */}
-        {/* @ts-expect-error - intrinsic light components are provided by react-three-fiber */}
         <ambientLight intensity={0.5} />
-        {/* @ts-expect-error - intrinsic light components are provided by react-three-fiber */}
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} />
-        {/* @ts-expect-error - intrinsic light components are provided by react-three-fiber */}
         <pointLight position={[-10, -10, -10]} intensity={1} color="#0057FF" />
         
         <Suspense fallback={null}>
